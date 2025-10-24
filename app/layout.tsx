@@ -4,18 +4,26 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const apple = localFont({
-  src: [
-    {
-      path: "../fonts/apple_fonts/AppleGaramond-Bold.ttf",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  variable: "--font-apple"
+  src: "../fonts/apple_fonts/AppleGaramond.ttf",
+  weight: "400",
+  style: "normal",
+
+  variable: "--font-apple",
+  display: "swap",
 });
 
+const lato = localFont({
+  src: "../fonts/lato/Lato-Regular.ttf",
+  weight: "400",
+  style: "normal",
+
+  variable: "--font-lato",
+  display: "swap",
+});
+
+
 export const metadata: Metadata = {
-  title: "Monaski",
+  title: "Monaski - Web Developer",
   description: "Fullstack Dev",
 };
 
@@ -26,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${apple.variable} antialiased`}>
+      <body className={`${apple.variable} ${lato.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
