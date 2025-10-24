@@ -1,16 +1,42 @@
-import { FileText, Github, Home, Twitter } from "lucide-react";
+"use client"
+
+import { FileText, Github, Home, Linkedin, Twitter } from "lucide-react";
 import { ModeToggle } from "./ModeToggle";
 import Link from "next/link";
+import StaggeredMenu from "./StaggeredMenu";
 
 const Navbar = () => {
   const navItems = [
     { icon: <Home className="size-5" />, label: "Home", href: "#home" },
     { icon: <FileText className="size-5" />, label: "Resume", href: "#resume" },
-    { icon: <Github className="size-5" />, label: "GitHub", href: "https://github.com/skidev101" },
-    { icon: <Twitter className="size-5" />, label: "Twitter", href: "https://x.com/monaski_" },
+    {
+      icon: <Github className="size-5" />,
+      label: "GitHub",
+      href: "https://github.com/skidev101",
+    },
+    {
+      icon: <Twitter className="size-5" />,
+      label: "Twitter",
+      href: "https://x.com/monaski_",
+    },
+  ];
+
+  const menuItems = [
+    { label: "Home", ariaLabel: "Go to home page", link: "/" },
+    { label: "About", ariaLabel: "Learn about us", link: "/about" },
+    { label: "Services", ariaLabel: "View our services", link: "/services" },
+    { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
+  ];
+
+  const socialItems = [
+    { label: "Twitter", icon: <Twitter className="size-5" />, link: "https://x.com/monaski_" },
+    { label: "GitHub", icon: <Github className="size-5" />, link: "https://github.com/skidev101" },
+    { label: "LinkedIn", icon: <Linkedin className="size-5" />, link: "https://linkedin.com/in/ojomonaethaninedu" },
+    { label: "Resume", icon: <FileText className="size-5" />, link: "http://example.com/resume.pdf" },
   ];
 
   return (
+    <>
     <nav className="fixed z-10 top-0 w-full flex justify-between items-center p-4 backdrop-blur-sm">
       <h1 className="text-3xl font-heading">Monaski</h1>
 
@@ -39,7 +65,28 @@ const Navbar = () => {
 
         <ModeToggle />
       </div>
+
     </nav>
+      {/* <div style={{ height: "100vh", background: "#1a1a1a" }}> */}
+        <StaggeredMenu
+          isFixed={true}
+          position="right"
+          items={menuItems}
+          socialItems={socialItems}
+          displaySocials={true}
+          displayItemNumbering={true}
+          menuButtonColor="#C55A11"
+          openMenuButtonColor="#C55A11"
+          changeMenuColorOnOpen={true}
+          colors={["#C55A11", "#F97316"]}
+          // logoUrl="/logo.png"
+          accentColor="#C55A11"
+          onMenuOpen={() => console.log("Menu opened")}
+          onMenuClose={() => console.log("Menu closed")}
+          className="font-heading sm:hidden"
+        />
+      {/* </div> */}
+    </>
   );
 };
 

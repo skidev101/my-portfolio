@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
 import BgPattern from "./BgPattern";
+import BlurText from "./BlurText";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 
@@ -18,7 +19,7 @@ const Hero = () => {
             {/* <h1 className="text-5xl sm:text-7xl font-heading">
               Hi, I'm Ethan. <br /> A Web Developer
             </h1> */}
-            <motion.h1
+            {/* <motion.h1
               initial={{ opacity: 0, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
@@ -31,11 +32,26 @@ const Hero = () => {
               className="text-5xl sm:text-7xl font-heading"
             >
               Hi, I'm Ethan. <br /> A Web Developer
-            </motion.h1>
+            </motion.h1> */}
             {/* <p className="text-md sm:text-lg mt-3">
               I create things for the web that takes your business to the next
               level
             </p> */}
+
+            <BlurText
+              text="Hi, I'm Ethan."
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="text-5xl sm:text-7xl font-heading"
+            />
+            <BlurText
+              text="A Web Developer"
+              delay={300} // Stagger the second line
+              animateBy="words"
+              direction="bottom"
+              className="text-5xl sm:text-7xl font-heading"
+            />
 
             <motion.p
               initial={{ opacity: 0, y: 60 }}
@@ -49,10 +65,8 @@ const Hero = () => {
               viewport={{ once: true }}
               className="text-gray-600 dark:text-gray-300 mt-4 text-lg"
             >
-             
-                I create things for the web that takes your business to the next
-                level
-              
+              I create things for the web that takes your business to the next
+              level
             </motion.p>
 
             <div className="flex mt-6 gap-3">
