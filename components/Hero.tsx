@@ -70,7 +70,9 @@ const Hero = () => {
             </motion.p>
 
             <div className="flex mt-6 gap-3">
-              <Button className="px-4 py-2 text-md hover:scale-x-105 origin-left text-white transition-all duration-150 hover:cursor-pointer rounded-xl">
+              <Button 
+              onClick={() => console.log("hire me!!")}
+              className="px-4 py-2 text-md hover:scale-x-105 origin-left text-white transition-all duration-150 hover:cursor-pointer rounded-xl">
                 Hire Me!
               </Button>
               <Button className="px-4 py-2 text-md hover:scale-x-108 origin-left text-white bg-black/30 hover:bg-black dark:bg-gray-600 transition-all duration-150 hover:cursor-pointer rounded-full">

@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
@@ -30,6 +30,7 @@ export interface StaggeredMenuProps {
   changeMenuColorOnOpen?: boolean;
   onMenuOpen?: () => void;
   onMenuClose?: () => void;
+  renderMenuContent?: (isOpen: boolean) => React.ReactNode;
 }
 
 export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
@@ -48,6 +49,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   isFixed = false,
   onMenuOpen,
   onMenuClose,
+  renderMenuContent,
 }: StaggeredMenuProps) => {
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
@@ -408,10 +410,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
   return (
     <div
-      className={`sm-scope z-40 sm:z-0 ${
+      className={`sm-scope z-10 ${
         isFixed
           ? "fixed top-0 left-0 w-screen h-screen overflow-hidden"
-          : "w-full h-full"
+          : "w-full"
       }`}
     >
       <div
@@ -456,11 +458,18 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between p-[2em] bg-transparent pointer-events-none z-20"
           aria-label="Main navigation header"
         >
+         <div
+            className={`transition-all duration-300 delay-[400ms] ${
+              open ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {renderMenuContent?.(open)}
+          </div> 
           <div
             className="sm-logo flex items-center select-none pointer-events-auto"
             aria-label="Logo"
           >
-            {logoUrl && (
+            {/* {logoUrl && (
               <img
                 src={logoUrl}
                 alt="Logo"
@@ -469,11 +478,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 width={110}
                 height={24}
               />
-            )}
+            )} */}
           </div>
-
-      {onMenuOpen && <ModeToggle />}
-
 
           <button
             ref={toggleBtnRef}
@@ -526,11 +532,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         <aside
           id="staggered-menu-panel"
           ref={panelRef}
-          className="staggered-menu-panel absolute top-0 right-0 h-full bg-white flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px]"
+          className="absolute top-0 right-0 h-full bg-white dark:bg-black/90 pl-10 pt-[6em] flex flex-col overflow-y-auto z-10 backdrop-blur-[12px]"
           style={{ WebkitBackdropFilter: "blur(12px)" }}
           aria-hidden={!open}
         >
-
           <div className="sm-panel-inner flex-1 flex flex-col gap-5">
             <ul
               className="sm-panel-list list-none m-0 p-0 flex flex-col gap-2"
@@ -544,7 +549,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                     key={it.label + idx}
                   >
                     <a
-                      className="sm-panel-item relative text-black font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
+                      className=" relative text-black dark:text-white font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
                       href={it.link}
                       aria-label={it.ariaLabel}
                       data-index={idx + 1}
@@ -583,12 +588,11 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 >
                   {socialItems.map((s, i) => (
                     <li key={s.label + i} className="sm-socials-item">
-                      
                       <a
                         href={s.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="sm-socials-link flex items-center gap-2 text-[1.2rem] font-medium text-[#111] no-underline relative py-[2px] transition-[color,opacity] duration-300 ease-linear"
+                        className=" gap-2 text-[1.2rem] font-medium text-[#111] dark:text-white no-underline relative py-[2px] transition-[color,opacity] duration-300 ease-linear"
                       >
                         {s.icon} {s.label}
                       </a>

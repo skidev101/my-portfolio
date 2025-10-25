@@ -36,8 +36,8 @@ const Navbar = () => {
   ];
 
   return (
-    <>
-    <nav className="fixed z-10 top-0 w-full flex justify-between items-center p-4 backdrop-blur-sm">
+    <div className="relative">
+    <nav className="fixed z-20 top-0 w-full flex justify-between items-center p-4 backdrop-blur-sm">
       <h1 className="text-3xl font-heading">Monaski</h1>
 
       <div className="hidden sm:flex gap-3 items-center border border-gray-500 backdrop-blur-2xl rounded-3xl px-5 py-2 bg-white/70 dark:bg-black/50 text-gray-700 dark:text-gray-300">
@@ -67,26 +67,29 @@ const Navbar = () => {
       </div>
 
     </nav>
-      {/* <div style={{ height: "100vh", background: "#1a1a1a" }}> */}
+    <div className="fixed top-10 right-4 z-20 block sm:hidden">
+
         <StaggeredMenu
-          isFixed={true}
+          isFixed={false}
           position="right"
           items={menuItems}
           socialItems={socialItems}
           displaySocials={true}
           displayItemNumbering={true}
-          menuButtonColor="#C55A11"
-          openMenuButtonColor="#C55A11"
+          menuButtonColor="#F97316"
+          openMenuButtonColor="#F97316"
           changeMenuColorOnOpen={true}
           colors={["#C55A11", "#F97316"]}
-          // logoUrl="/logo.png"
-          accentColor="#C55A11"
+          accentColor="#F97316"
           onMenuOpen={() => console.log("Menu opened")}
           onMenuClose={() => console.log("Menu closed")}
           className="font-heading sm:hidden"
+          renderMenuContent={(isOpen) => (
+            isOpen && <ModeToggle className="text-black dark:text-white" />
+          )}
         />
-      {/* </div> */}
-    </>
+      </div>
+    </div>
   );
 };
 
