@@ -1,29 +1,44 @@
-"use client"
+"use client";
 
 import { FileText, Github, Linkedin, Twitter } from "lucide-react";
 import { ModeToggle } from "./ModeToggle";
 import StaggeredMenu from "./StaggeredMenu";
+import { Button } from "./ui/button";
 
 const Projects = () => {
   const menuItems = [
-      { label: "Home", ariaLabel: "Go to home page", link: "/" },
-      { label: "About", ariaLabel: "Learn about us", link: "/about" },
-      { label: "Services", ariaLabel: "View our services", link: "/services" },
-      { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
-    ];
-  
-    const socialItems = [
-      { label: "Twitter", icon: <Twitter className="size-5" />, link: "https://x.com/monaski_" },
-      { label: "GitHub", icon: <Github className="size-5" />, link: "https://github.com/skidev101" },
-      { label: "LinkedIn", icon: <Linkedin className="size-5" />, link: "https://linkedin.com/in/ojomonaethaninedu" },
-      { label: "Resume", icon: <FileText className="size-5" />, link: "http://example.com/resume.pdf" },
-    ];
+    { label: "Home", ariaLabel: "Go to home page", link: "/" },
+    { label: "About", ariaLabel: "Learn about us", link: "/about" },
+    { label: "Services", ariaLabel: "View our services", link: "/services" },
+    { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
+  ];
 
-
+  const socialItems = [
+    {
+      label: "Twitter",
+      icon: <Twitter className="size-5" />,
+      link: "https://x.com/monaski_",
+    },
+    {
+      label: "GitHub",
+      icon: <Github className="size-5" />,
+      link: "https://github.com/skidev101",
+    },
+    {
+      label: "LinkedIn",
+      icon: <Linkedin className="size-5" />,
+      link: "https://linkedin.com/in/ojomonaethaninedu",
+    },
+    {
+      label: "Resume",
+      icon: <FileText className="size-5" />,
+      link: "http://example.com/resume.pdf",
+    },
+  ];
 
   return (
     <section className="relative flex justify-center flex-col min-h-screen font-sans-serif">
-      <StaggeredMenu
+      {/* <StaggeredMenu
           isFixed={false}
           position="right"
           items={menuItems}
@@ -41,7 +56,16 @@ const Projects = () => {
           renderMenuContent={(isOpen) => (
             isOpen && <ModeToggle className="text-black dark:text-white" />
           )}
-        />
+        /> */}
+
+      <div >
+         <Button
+          onClick={() => console.log("hello world btn clicked")}
+          className="px-4 py-2"
+        >
+          Hello world
+        </Button>
+      </div>
     </section>
   );
 };
