@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import BgPattern from "./BgPattern";
 import BlurText from "./BlurText";
 import { Button } from "./ui/button";
@@ -13,7 +14,7 @@ const Hero = () => {
     >
       <BgPattern />
 
-      <div className="px-4 sm:px-22 py-[150px]">
+      <div className="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-22 py-[150px]">
         <div className=" relative sm:max-w-1/2 py-[50px]">
           <motion.div
             initial={{ scaleY: 0, opacity: 0, x: -20 }}
@@ -76,6 +77,16 @@ const Hero = () => {
               </Button>
             </motion.div>
           </div>
+        </div>
+
+        <div>
+          <Image
+            src="/white-globe.png"
+            alt="globe"
+            width={250}
+            height={250}
+            className="object-cover"
+           />
         </div>
       </div>
     </section>
