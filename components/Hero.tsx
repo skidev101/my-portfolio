@@ -5,6 +5,7 @@ import BgPattern from "./BgPattern";
 import BlurText from "./BlurText";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
+import { Globe } from "./ui/globe";
 
 const Hero = () => {
   return (
@@ -90,6 +91,7 @@ const Hero = () => {
             height={250}
             className="object-cover invert-100 dark:invert-0 mt-10 lg:mt-0"
           />
+          {/* <Globe className="w-[100px] h-[100px] mt-40 mr-20 float-right" /> */}
         </div>
       </div>
     </section>

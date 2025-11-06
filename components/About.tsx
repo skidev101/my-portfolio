@@ -1,3 +1,5 @@
+import { TechCloud } from "./TechCloud";
+
 const About = () => {
   return (
     <section
@@ -22,6 +24,10 @@ const About = () => {
         repudiandae ad voluptates iure delectus doloribus in architecto
         nesciunt, consequatur eius officia! Sequi iusto corporis tenetur et
       </p>
+
+      <div>
+        {/* <TechCloud /> */}
+      </div>
     </section>
   );
 };
