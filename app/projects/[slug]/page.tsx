@@ -1,18 +1,18 @@
 import LinkButton from "@/components/LinkButton";
-import { getProjectById } from "@/lib/projects";
+import { getProjectBySlug } from "@/lib/projects";
 import { ArrowUpRight, Github } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
-const page = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const id = (await params).id;
-  const projectDetails = getProjectById(id);
-  console.log("id recieved:", id);
+
+const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const slug = (await params).slug;
+  const projectDetails = getProjectBySlug(slug);
+  console.log("slug recieved:", slug);
   console.log("project recieved:", projectDetails);
 
   return (
     <section className="mt-20 sm:mt-[200px] relative flex justify-center flex-col px-3 lg:px-50">
-      <div className="flex flex-col">
+      <div className="flex flex-col"> 
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
             <div className="flex items-baseline gap-4">

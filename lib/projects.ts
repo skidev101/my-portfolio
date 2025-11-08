@@ -1,6 +1,6 @@
 export const projects = [
   {
-    id: "1",
+    slug: "jsyk",
     image: "project1.jpeg",
     title: "JSYK",
     subtitle: "Anonymous feedback app",
@@ -25,7 +25,7 @@ export const projects = [
     images: ["project1.jpeg", "project2.jpeg", "project3.jpeg"],
   },
   {
-    id: "2",
+    slug: "startuplens",
     image: "project2.jpeg",
     title: "StartupLens",
     subtitle: "Pitch your startup to the world",
@@ -39,7 +39,7 @@ export const projects = [
     images: ["project4.jpeg", "project3.jpeg"],
   },
   {
-    id: "3",
+    slug: "mirror",
     image: "project3.jpeg",
     title: "Mirror",
     subtitle: "The worlds biggest documentation platform for developers",
@@ -60,7 +60,7 @@ export const projects = [
     images: ["project6.jpeg", "project2.jpeg", "project1.jpeg"],
   },
   {
-    id: "4",
+    slug: "unscathed",
     image: "project4.jpeg",
     title: "Unscathed",
     subtitle: "The one stop for open source developer tools",
@@ -82,6 +82,6 @@ export const projects = [
   },
 ];
 
-export function getProjectById(id: string) {
-  return projects.find((p) => p.id === id);
+export function getProjectBySlug(slug: string) {
+  return projects.find((p) => p.slug === slug);
 }

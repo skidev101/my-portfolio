@@ -14,8 +14,8 @@ const page = () => {
       <div className="grid justify-center gap-3 sm:gap-5 sm:grid-cols-2 mt-4 sm:mt-5">
         {projects.map((project: Project) => (
           <ProjectCard
-            key={project.id}
-            id={project.id}
+            key={project.slug}
+            slug={project.slug}
             image={project.image}
             title={project.title}
             subtitle={project.subtitle}
