@@ -13,7 +13,7 @@ const CallToAction = () => {
         </h1>
       </div>
 
-      <div className="relative overflow-hidden w-full min-h-[460px] sm:min-h-[390px] text-center bg-card mt-2 rounded-2xl border border-gray-300 dark:border-gray-500">
+      <div className="relative overflow-hidden w-full min-h-[460px] sm:min-h-[390px] text-center bg-card mt-1 sm:mt-2 rounded-2xl border border-gray-300 dark:border-gray-500">
         <div className="absolute inset-0">
           <Meteors />
         </div>

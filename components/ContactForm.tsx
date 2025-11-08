@@ -16,6 +16,7 @@ import {
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
+import { Loader2 } from "lucide-react";
 
 const contactSchema = z.object({
   name: z.string().min(3, { message: "Name is too short" }),
@@ -42,10 +43,13 @@ const ContactForm = () => {
 
   const onSubmit = async () => {
     setIsLoading(true);
-
+    
     try {
-      console.log("form submitted");
-      setSent(true);
+      setTimeout(() => {
+        console.log("form submitted");
+        setSent(true);
+        form.reset();
+      }, 3000);
     } catch (error) {
       console.error("error submitting form:", error);
     } finally {
@@ -72,7 +76,7 @@ const ContactForm = () => {
                     aria-invalid={fieldState.invalid}
                     placeholder="Full name"
                     autoComplete="off"
-                    className="h-[50px] rounded-2xl"
+                    className="h-[50px] rounded-2xl bg-gray-100 border border-gray-200 dark:border-gray-500 placeholder:text-gray-600"
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -91,7 +95,7 @@ const ContactForm = () => {
                     aria-invalid={fieldState.invalid}
                     placeholder="Email address"
                     autoComplete="off"
-                    className="h-[50px] rounded-2xl -mt-3 sm:mt-0"
+                    className="h-[50px] rounded-2xl -mt-3 sm:mt-0 bg-gray-100 border border-gray-200 dark:border-gray-500 placeholder:text-gray-600"
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -112,7 +116,7 @@ const ContactForm = () => {
                     aria-invalid={fieldState.invalid}
                     rows={6}
                     placeholder="Hey, i would like us to work on..."
-                    className="min-h-40 resize-none rounded-2xl"
+                    className="min-h-40 resize-none rounded-2xl bg-gray-100 border border-gray-200 dark:border-gray-500 placeholder:text-gray-600"
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -127,11 +131,15 @@ const ContactForm = () => {
           <Field>
             <Button
               type="submit"
-              className="h-[50px] mt-4 rounded-2xl hover:cursor-pointer"
+              className="h-[50px] mt-4 rounded-2xl hover:cursor-pointer active:scale-98 bg-gray-100 dark:bg-[#222121] dark:hover:bg-[#2b2929] hover:bg-gray-200 border border-gray-200 dark:border-[#141212]"
               variant="secondary"
               disabled={isLoading}
             >
-              Send Message
+              {isLoading ? (
+                <Loader2 className="size-4 animate-spin" />
+              ) : (
+                "Send Message"
+              )}
             </Button>
           </Field>
         </CardFooter>
