@@ -7,14 +7,14 @@ import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import LinkButton from "./LinkButton";
 
-const ProjectCard = ({ id, image, title, subtitle, links }: Project) => {
+const ProjectCard = ({ slug, image, title, subtitle, links }: Project) => {
   const router = useRouter();
-  console.log(id, image, title, links);
+  console.log(slug, image, title, links);
 
   return (
     <div
       // onClick={() => router.push(`/projects/${id}`)}
-      className="w-full px-4 py-7 rounded-3xl bg-card dark:bg-[#201e1e] border border-gray-300 dark:border-gray-500 dark:shadow-md"
+      className="w-full px-4 py-7 rounded-3xl bg-card dark:bg-[#201e1e] dark:shadow-md"
     >
       <div className="relative w-full h-50 rounded-3xl overflow-hidden group">
         <Image
@@ -44,7 +44,7 @@ const ProjectCard = ({ id, image, title, subtitle, links }: Project) => {
         />
 
         <Button
-          onClick={() => router.push(`projects/${id}`)}
+          onClick={() => router.push(`projects/${slug}`)}
           className="flex items-center gap-2 hover:px-4 rounded-xl hover:cursor-pointer hover:scale-x-105 transition-all duration-300 active:scale-95 text-gray-700 dark:text-gray-300 hover:text-black bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700 hover:bg-gray-300"
         >
           Details
