@@ -62,7 +62,7 @@ const Navbar = () => {
 
   return (
     <div className="relative flex items-center">
-      <nav className="fixed z-20 top-0 w-full flex justify-between items-center p-4 backdrop-blur-sm border-b border-gray-100 dark:border-black/20">
+      <nav className="fixed z-20 top-0 w-full flex justify-between items-center py-4 px-20 backdrop-blur-sm border-b border-gray-100 dark:border-black/20">
         <h1 className="text-[1.3rem] mt-2 sm:mt-0 sm:text-3xl font-heading">Monaski</h1>
 
         <div className="hidden sm:flex gap-3 items-center border border-gray-500 backdrop-blur-2xl rounded-[1.2rem] px-5 py-2 bg-white/70 dark:bg-black/30 text-gray-700 dark:text-gray-300">
