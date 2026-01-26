@@ -79,7 +79,7 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           <p className="text-gray-700 dark:text-white/90 text-[1.1rem] sm:text-[1.4rem]">
             Project Images
           </p>
-          <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
+          <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 pb-6">
             {projectDetails?.images.map((img: string, i) => (
               <div
                 key={i}

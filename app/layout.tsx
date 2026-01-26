@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 
 const apple = localFont({
   src: "../fonts/apple_fonts/AppleGaramond.ttf",
@@ -42,7 +42,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          <Header />
           {children}
         </ThemeProvider>
       </body>
