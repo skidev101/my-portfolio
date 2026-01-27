@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/Header";
 
 const apple = localFont({
-  src: "../fonts/apple_fonts/AppleGaramond.ttf",
+  src: "../fonts/BricolageGrotesque.ttf",
   weight: "400",
   style: "normal",
 

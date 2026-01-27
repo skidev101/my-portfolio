@@ -13,24 +13,20 @@ const Hero = () => {
       id="home"
       className="relative flex justify-center flex-col min-h-screen px-4 py-6"
     >
-      {/* <BgPattern /> */}
+      <BgPattern />
 
-      <div className="mt-20 bg-stone-100 flex flex-col justify-center items-center rounded-[8rem] md:flex-row px-4 lg:px-22 py-[150px]">
-        <div className=" relative flex justify-center items-center text-center py-[50px] w-full">
-          {/* Straight black line */}
-          {/* <motion.div
-            initial={{ scaleY: 0, opacity: 0, x: -20 }}
-            animate={{ scaleY: 1, opacity: 1, x: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 100,
-              damping: 20,
-              delay: 0.3,
-            }}
-            className="absolute left-0 top-0 w-[1px] h-[370px] bg-gray-600 origin-top z-10"
-          ></motion.div> */}
+      <div className="mt-20 flex flex-col justify-center items-centermd:flex-row px-4 lg:px-22">
+        <div className="- relative flex flex-col justify-center items-center text-center py-[50px] w-full">
 
-          <div className="ml-4 max-w-4xl text-center">
+          <Image
+            src="/white-globe.png"
+            alt="globe"
+            width={150}
+            height={150}
+            className="object-cover invert-100 dark:invert-0 mt-10 lg:mt-0"
+          />
+
+          <div className=" ml-4 max-w-3xl text-center">
             <BlurText
               text="Hi, I'm Ethan."
               delay={150}
@@ -39,7 +35,7 @@ const Hero = () => {
               className="flex justify-center text-5xl sm:text-7xl font-heading"
             />
             <BlurText
-              text="A Web Developer"
+              text="Web Developer"
               delay={300}
               animateBy="words"
               direction="bottom"
@@ -57,8 +53,7 @@ const Hero = () => {
               }}
               className="text-gray-600 dark:text-gray-300 mt-4 text-lg"
             >
-              I create things for the web that takes your business to the next
-              level
+             I build modern, scalable web solutions with a focus on performance, usability, and clean design that deliver real business value.
             </motion.p>
 
             <motion.div
@@ -73,12 +68,12 @@ const Hero = () => {
                 onClick={() => console.log("hire me!!")}
                 className="flex items-center gap-2 hover:px-4 text-white rounded-full hover:cursor-pointer hover:scale-x-105 transition-all duration-300 active:scale-95"
               >
-                Hire Me!
+                Hire Me
               </Button>
               <Button
                 className="hover:px-4 text-gray-700 dark:text-gray-300 hover:text-black bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700 hover:bg-gray-300 active:scale-95 hover:cursor-pointer rounded-full"
               >
-                My Resume
+                View Resume
               </Button>
             </motion.div>
           </div>

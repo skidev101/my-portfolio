@@ -12,15 +12,13 @@ interface ButtonProps {
 
 const LinkButton = ({ text, externalLink, className, icon }: ButtonProps) => {
   return (
-    <div className="flex items-center gap-3 mt-4">
-      <Button
-        onClick={() => window.open(externalLink)}
-        className={`flex items-center gap-2 hover:px-4 text-white rounded-xl hover:cursor-pointer hover:scale-x-105 transition-all duration-300 active:scale-95 ${className}`}
-      >
-        {text}
-        {icon}
-      </Button>
-    </div>
+    <Button
+      onClick={() => window.open(externalLink)}
+      className={`inline-flex items-center gap-2 hover:px-4 text-white rounded-xl hover:cursor-pointer hover:scale-x-105 transition-all duration-300 active:scale-95 ${className}`}
+    >
+      {text}
+      {icon}
+    </Button>
   );
 };
 

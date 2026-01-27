@@ -4,30 +4,29 @@ const About = () => {
   return (
     <section
       id="about"
-      className="-mt-18 sm:mt-0 flex text-left flex-col max-h-max px-3 lg:px-50"
+      className="flex justify-center items-center flex-col w-full max-h-max -mt-18 md:mt-0 px-3 md:px-50 md:py-30"
     >
+      <div className="max-w-3xl">
+
       <h1 className="text-black/90 dark:text-white/90 text-5xl font-heading">
         About Me
       </h1>
 
       <p className="text-[1.1rem] text-gray-600 dark:text-gray-300 mt-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, magni
-        est eveniet cum corrupti numquam sequi velit nam id suscipit eos
-        repellendus voluptas dignissimos alias, facere architecto eum,
-        voluptatum corporis. Explicabo illo exercitationem qui nulla rerum
-        labore saepe, cupiditate quisquam inventore nihil magnam ipsa est atque
-        doloremque dignissimos dolorum accusantium ratione sapiente possimus
-        consectetur ipsam eum.
+        I'm a web developer with a strong focus on building clean, reliable, and
+        user-centered applications. I enjoy turning ideas into well-structured,
+        maintainable solutions that perform well across devices and browsers.
         <br />
-        <br /> Dolorem consequatur explicabo dolorum. Sequi mollitia a sint
-        molestias, incidunt praesentium dolore quidem harum repellat debitis qui
-        repudiandae ad voluptates iure delectus doloribus in architecto
-        nesciunt, consequatur eius officia! Sequi iusto corporis tenetur et
+        <br />
+        My work emphasizes modern frontend technologies, thoughtful UI/UX
+        design, and scalable architecture. I'm constantly learning and refining
+        my skills, whether that's improving performance, writing cleaner code,
+        or exploring new tools and frameworks to stay current in the fast-moving
+        web ecosystem.
       </p>
-
-      <div>
-        {/* <TechCloud /> */}
       </div>
+
+      <div>{/* <TechCloud /> */}</div>
     </section>
   );
 };
