@@ -33,8 +33,8 @@ const Hero = () => {
           <BgPattern />
         </motion.div>
 
-        <div className="mt-20 flex flex-col justify-center items-centermd:flex-row px-4 lg:px-22">
-          <div className="relative flex flex-col justify-center items-center text-center py-[50px] w-full">
+        <div className="mt-20 flex flex-col justify-center items-centermd:flex-row px-2 md:px-4 lg:px-22">
+          <div className="relative flex flex-col justify-left md:justify-center items-center text-left md:text-center py-[30px] md:py-[50px] w-full">
             <motion.div style={{ y: globeY }}>
               <Image
                 src="/white-globe.png"
@@ -47,21 +47,21 @@ const Hero = () => {
 
             <motion.div
               style={{ y: textY }}
-              className="mt-2 ml-4 max-w-3xl text-center"
+              className="mt-2 ml-4 max-w-3xl text-left md:text-center"
             >
               <BlurText
                 text="Hi, I'm Ethan."
                 delay={150}
                 animateBy="words"
                 direction="bottom"
-                className="flex justify-center text-5xl sm:text-7xl font-heading"
+                className="flex justify-left md:justify-center text-5xl sm:text-7xl font-heading"
               />
               <BlurText
                 text="Web Developer"
                 delay={300}
                 animateBy="words"
                 direction="bottom"
-                className="flex justify-center text-5xl sm:text-7xl font-heading"
+                className="flex justify-left md:justify-center text-5xl sm:text-7xl font-heading"
               />
 
               <motion.p

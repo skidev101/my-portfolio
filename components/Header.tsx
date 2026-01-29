@@ -81,7 +81,7 @@ const Header = () => {
     <header className="fixed z-20 inset-x-0 mt-6 flex justify-center align-center">
       <nav
         className="
-        liquid-nav hidden sm:flex gap-3 items-center
+        liquid-nav flex gap-3 items-center
         px-5 py-2
         rounded-[1.4em]
         text-gray-700 dark:text-gray-200
@@ -135,10 +135,10 @@ const Header = () => {
 
         <Separator
           orientation="vertical"
-          className="mr-2 data-[orientation=vertical]:h-6"
+          className="hidden sm:flex mr-2 data-[orientation=vertical]:h-6"
         />
 
-        <Button className="bg-gray-200 rounded-xl hover:text-white transition-all duration-300 hover:px-5">
+        <Button className="hidden sm:flex bg-gray-200 rounded-xl hover:text-white transition-all duration-300 hover:px-5">
           Hire me
         </Button>
       </nav>

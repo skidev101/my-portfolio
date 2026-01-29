@@ -1,31 +1,56 @@
-import { Github, Mail } from "lucide-react";
+import { Github, Mail, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-full mt-10 py-10">
-      <div>
-        <p className="text-gray-600 dark:text-gray-300 font-heading">
-          Copyright &copy; {new Date().getFullYear()} Monaski
-        </p>
-      </div>
-      <div className="flex justify-center items-center gap-2 mt-1">
-        <a href="https://x.com/monaski_">
+    <footer className="flex flex-col justify-center items-center w-full mt-10 py-10">
+      {/* Copyright */}
+      <p className="text-gray-600 dark:text-gray-300 font-heading">
+        &copy; Copyright {new Date().getFullYear()} Monaski
+      </p>
+
+      {/* Social Icons */}
+      <div className="flex justify-center items-center gap-4 mt-2">
+        {/* GitHub */}
+        <a
+          href="https://github.com/skidev101"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-600 hover:text-gray-900 dark:hover:text-white transition-colors"
+          aria-label="GitHub"
+        >
+          <Github size={24} />
+        </a>
+
+        {/* Mail */}
+        <a
+          href="mailto:your-email@example.com"
+          className="text-gray-600 hover:text-gray-900 dark:hover:text-white transition-colors"
+          aria-label="Email"
+        >
+          <Mail size={24} />
+        </a>
+
+        {/* Twitter / X */}
+        <a
+          href="https://x.com/monaski_"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-600 hover:text-gray-900 dark:hover:text-white transition-colors"
+          aria-label="X / Twitter"
+        >
           <svg
-            stroke="currentColor"
-            fill="currentColor"
-            strokeWidth="0"
-            viewBox="0 0 512 512"
-            height="20"
-            width="20"
+            role="img"
+            viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            className="w-5 h-5"
           >
-            <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
+            <title>X</title>
+            <path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" />
           </svg>
         </a>
-        <Github className="size-5" />
-        <Mail className="size-5" />
       </div>
-    </div>
+    </footer>
   );
 };
 
