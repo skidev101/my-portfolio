@@ -1,29 +1,27 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { z } from "zod";
-import { Field, FieldError, FieldGroup } from "./ui/field";
+import { zodResolver } from '@hookform/resolvers/zod';
+import React, { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { Field, FieldError, FieldGroup } from './ui/field';
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
-import { Button } from "./ui/button";
-import { Loader2 } from "lucide-react";
+} from './ui/card';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { Button } from './ui/button';
+import { Loader2 } from 'lucide-react';
 
 const contactSchema = z.object({
-  name: z.string().min(3, { message: "Name is too short" }),
-  email: z.email({ message: "Enter a valid email address" }),
+  name: z.string().min(3, { message: 'Name is too short' }),
+  email: z.email({ message: 'Enter a valid email address' }),
   message: z
     .string()
-    .min(5, { message: "Message should be at least 3 characters" }),
+    .min(5, { message: 'Message should be at least 5 characters' }),
 });
 
 type ContactFormSchema = z.infer<typeof contactSchema>;
@@ -35,37 +33,39 @@ const ContactForm = () => {
   const form = useForm<ContactFormSchema>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      message: "",
+      name: '',
+      email: '',
+      message: '',
     },
   });
 
   const onSubmit = async () => {
     setIsLoading(true);
-    
+
     try {
       setTimeout(() => {
-        console.log("form submitted");
         setSent(true);
         form.reset();
-      }, 3000);
+      }, 1500);
     } catch (error) {
-      console.error("error submitting form:", error);
+      console.error('Error submitting form:', error);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <Card className="w-full h-full px-0 md:px-24 bg-transparent">
-      <CardHeader>
-        {/* <CardTitle>fill these</CardTitle> */}
-        <CardDescription>How can i help biggest</CardDescription>
+    <Card className="w-full max-w-3xl mx-auto bg-transparent border-none shadow-none">
+      <CardHeader className="px-0 text-center">
+        <CardDescription className="hidden text-base text-gray-600">
+          Tell me about your project
+        </CardDescription>
       </CardHeader>
+
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <CardContent className="">
-          <FieldGroup className="flex flex-col sm:flex-row">
+        <CardContent className="px-0 space-y-6">
+          {/* Name + Email */}
+          <FieldGroup className="flex flex-col sm:flex-row gap-4">
             <Controller
               name="name"
               control={form.control}
@@ -73,10 +73,17 @@ const ContactForm = () => {
                 <Field data-invalid={fieldState.invalid}>
                   <Input
                     {...field}
-                    aria-invalid={fieldState.invalid}
                     placeholder="Full name"
                     autoComplete="off"
-                    className="h-[50px] rounded-2xl bg-gray-100 border border-gray-200 dark:border-gray-500 placeholder:text-gray-600"
+                    aria-invalid={fieldState.invalid}
+                    className="
+                      h-[48px]
+                      rounded-xl
+                      bg-transparent
+                      border border-gray-300
+                      focus:border-gray-900 focus:ring-0
+                      placeholder:text-gray-400
+                    "
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -92,10 +99,17 @@ const ContactForm = () => {
                 <Field data-invalid={fieldState.invalid}>
                   <Input
                     {...field}
-                    aria-invalid={fieldState.invalid}
                     placeholder="Email address"
                     autoComplete="off"
-                    className="h-[50px] rounded-2xl -mt-3 sm:mt-0 bg-gray-100 border border-gray-200 dark:border-gray-500 placeholder:text-gray-600"
+                    aria-invalid={fieldState.invalid}
+                    className="
+                      h-[48px]
+                      rounded-xl
+                      bg-transparent
+                      border border-gray-300
+                      focus:border-gray-900 focus:ring-0
+                      placeholder:text-gray-400
+                    "
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -105,7 +119,8 @@ const ContactForm = () => {
             />
           </FieldGroup>
 
-          <FieldGroup className="mt-4">
+          {/* Message */}
+          <FieldGroup>
             <Controller
               name="message"
               control={form.control}
@@ -113,10 +128,18 @@ const ContactForm = () => {
                 <Field data-invalid={fieldState.invalid}>
                   <Textarea
                     {...field}
-                    aria-invalid={fieldState.invalid}
                     rows={6}
-                    placeholder="Hey, i would like us to work on..."
-                    className="min-h-40 resize-none rounded-2xl bg-gray-100 border border-gray-200 dark:border-gray-500 placeholder:text-gray-600"
+                    placeholder="Tell me a bit about what you’re building…"
+                    aria-invalid={fieldState.invalid}
+                    className="
+                      min-h-40
+                      resize-none
+                      rounded-xl
+                      bg-transparent
+                      border border-gray-300
+                      focus:border-gray-900 focus:ring-0
+                      placeholder:text-gray-400
+                    "
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -125,24 +148,30 @@ const ContactForm = () => {
               )}
             />
           </FieldGroup>
-        </CardContent>
 
-        <CardFooter>
-          <Field>
+          {/* Submit */}
+          <div className="pt-2">
             <Button
               type="submit"
-              className="h-[50px] mt-4 rounded-2xl hover:cursor-pointer active:scale-98 bg-gray-100 dark:bg-[#222121] dark:hover:bg-[#2b2929] hover:bg-gray-200 border border-gray-200 dark:border-[#141212]"
-              variant="secondary"
               disabled={isLoading}
+              className="
+                h-[48px]
+                w-full
+                rounded-xl
+                bg-gray-900
+                text-white
+                hover:bg-gray-800
+                active:scale-[0.98]
+              "
             >
               {isLoading ? (
                 <Loader2 className="size-4 animate-spin" />
               ) : (
-                "Send Message"
+                'Send message'
               )}
             </Button>
-          </Field>
-        </CardFooter>
+          </div>
+        </CardContent>
       </form>
     </Card>
   );
