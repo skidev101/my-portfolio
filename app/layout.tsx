@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/Header";
+import SvgFilters from "@/components/SvgFilters";
 
 const apple = localFont({
   src: "../fonts/BricolageGrotesque.ttf",
@@ -42,6 +43,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <SvgFilters />
           <Header />
           {children}
         </ThemeProvider>

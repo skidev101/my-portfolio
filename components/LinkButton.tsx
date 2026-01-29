@@ -14,10 +14,10 @@ const LinkButton = ({ text, externalLink, className, icon }: ButtonProps) => {
   return (
     <Button
       onClick={() => window.open(externalLink)}
-      className={`inline-flex items-center gap-2 hover:px-4 text-white rounded-xl hover:cursor-pointer hover:scale-x-105 transition-all duration-300 active:scale-95 ${className}`}
+      className={`group inline-flex items-center gap-2 hover:px-4 text-white rounded-xl hover:cursor-pointer hover:scale-x-105 transition-all duration-300 active:scale-95 ${className}`}
     >
       {text}
-      {icon}
+      {icon && <span className="">{icon}</span>}
     </Button>
   );
 };

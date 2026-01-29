@@ -11,7 +11,7 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   console.log("project recieved:", projectDetails);
 
   return (
-    <section className="mt-20 sm:mt-[200px] relative flex justify-center flex-col px-3 lg:px-50">
+    <section className="pt-20 sm:pt-[200px] relative flex justify-center flex-col px-3 lg:px-50">
       <div className="flex flex-col"> 
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
@@ -68,7 +68,7 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           {projectDetails?.stack.map((tech: string) => (
             <span
               key={tech}
-              className="text-xs sm:text-sm px-3 hover:px-4 py-1 mt-2 mr-2 rounded-full text-gray-700 dark:text-gray-300 bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 shadow-xs border border-gray-300 dark:border-gray-700 transition-all hover:scale-x-105 origin-center hover:cursor-default ease-out duration-300"
+              className="text-xs sm:text-sm px-3 hover:px-4 py-1 mt-2 mr-2 rounded-full text-gray-700 dark:text-gray-300 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all hover:scale-x-[4px] origin-center hover:cursor-default ease-out duration-300"
             >
               {tech}
             </span>

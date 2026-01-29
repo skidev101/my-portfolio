@@ -4,15 +4,15 @@ const About = () => {
   return (
     <section
       id="about"
-      className="flex justify-center items-center flex-col w-full max-h-max -mt-18 md:mt-0 px-3 md:px-50 md:py-30"
+      className="flex justify-center items-center flex-col min-h-screen w-full max-h-max -mt-18 md:mt-0"
     >
-      <div className="max-w-3xl">
+      <div className="max-w-4xl">
 
-      <h1 className="text-black/90 dark:text-white/90 text-5xl font-heading">
+      <h1 className="text-black/90 dark:text-white/90 text-5xl font-heading text-center">
         About Me
       </h1>
 
-      <p className="text-[1.1rem] text-gray-600 dark:text-gray-300 mt-3">
+      <p className="text-[1.1rem] text-gray-600 dark:text-gray-300 mt-3 sm:mt-8">
         I'm a web developer with a strong focus on building clean, reliable, and
         user-centered applications. I enjoy turning ideas into well-structured,
         maintainable solutions that perform well across devices and browsers.

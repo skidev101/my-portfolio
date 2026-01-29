@@ -49,22 +49,23 @@ const ProjectCard = ({
 
       {/* Actions */}
       <div className="flex items-center gap-3 mt-5">
-          <LinkButton
+          {/* <LinkButton
             text="Live Demo"
             externalLink={links?.live as string}
             icon={<ArrowUpRight className="size-4" />}
-          />
+            
+          /> */}
 
           <Button
             onClick={() => router.push(`/projects/${slug}`)}
-            className="flex items-center gap-2 rounded-xl transition-all duration-300 active:scale-95
+            className="group flex items-center gap-1 rounded-xl transition-all duration-300 active:scale-95
             text-gray-700 dark:text-gray-300
             bg-gray-200 dark:bg-gray-800
             hover:bg-gray-300 dark:hover:bg-gray-700
             border border-gray-300 dark:border-gray-700"
           >
             View Details
-            <ChevronRight className="size-4" />
+            <ChevronRight className="size-4 group-hover:translate-x-0.5 transition-all duration-200" />
           </Button>
       </div>
     </div>
