@@ -23,7 +23,7 @@ const Footer = () => {
 
         {/* Mail */}
         <a
-          href="mailto:your-email@example.com"
+          href="mailto:skidev101@gmail.com"
           className="text-gray-600 hover:text-gray-900 dark:hover:text-white transition-colors"
           aria-label="Email"
         >
