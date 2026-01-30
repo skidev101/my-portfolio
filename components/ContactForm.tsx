@@ -1,27 +1,22 @@
-'use client';
+"use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Field, FieldError, FieldGroup } from './ui/field';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-} from './ui/card';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
-import { Button } from './ui/button';
-import { Loader2 } from 'lucide-react';
+import { zodResolver } from "@hookform/resolvers/zod";
+import React, { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { z } from "zod";
+import { Field, FieldError, FieldGroup } from "./ui/field";
+import { Card, CardContent, CardDescription, CardHeader } from "./ui/card";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Button } from "./ui/button";
+import { Loader2 } from "lucide-react";
 
 const contactSchema = z.object({
-  name: z.string().min(3, { message: 'Name is too short' }),
-  email: z.email({ message: 'Enter a valid email address' }),
+  name: z.string().min(3, { message: "Name is too short" }),
+  email: z.email({ message: "Enter a valid email address" }),
   message: z
     .string()
-    .min(5, { message: 'Message should be at least 5 characters' }),
+    .min(5, { message: "Message should be at least 5 characters" }),
 });
 
 type ContactFormSchema = z.infer<typeof contactSchema>;
@@ -33,22 +28,32 @@ const ContactForm = () => {
   const form = useForm<ContactFormSchema>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      message: '',
+      name: "",
+      email: "",
+      message: "",
     },
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: ContactFormSchema) => {
     setIsLoading(true);
 
     try {
-      setTimeout(() => {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
         setSent(true);
         form.reset();
-      }, 1500);
+      } else {
+        console.error("Error sending email:", result.error);
+      }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     } finally {
       setIsLoading(false);
     }
@@ -167,7 +172,7 @@ const ContactForm = () => {
               {isLoading ? (
                 <Loader2 className="size-4 animate-spin" />
               ) : (
-                'Send message'
+                "Send message"
               )}
             </Button>
           </div>

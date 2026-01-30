@@ -21,7 +21,7 @@ const Header = () => {
     {
       icon: <FileText className="size-5" />,
       label: "Resume",
-      link: "/resume/Ojomona_Inedu_Resume.pdf",
+      link: "/assets/resume/Ojomona_Inedu_Resume.pdf",
       download: true,
     },
     { icon: <Home className="size-5" />, label: "Home", link: "/" },
@@ -43,7 +43,18 @@ const Header = () => {
   const socialItems = [
     {
       label: "Twitter",
-      icon: <Twitter className="size-5" />,
+      icon: (
+        <svg
+          role="img"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          className="w-4 h-4"
+        >
+          <title>X</title>
+          <path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" />
+        </svg>
+      ),
       link: "https://x.com/monaski_",
     },
     {
@@ -60,6 +71,7 @@ const Header = () => {
       label: "Resume",
       icon: <FileText className="size-5" />,
       link: "http://example.com/resume.pdf",
+      download: true
     },
   ];
 
@@ -80,39 +92,27 @@ const Header = () => {
   return (
     <header className="fixed z-20 inset-x-0 mt-6 flex justify-center align-center">
       <nav
-        className="
-        liquid-nav flex gap-3 items-center
-        px-5 py-2
-        rounded-[1.4em]
-        text-gray-700 dark:text-gray-200
-
-        bg-white/10 dark:bg-black/20
-        border border-white/20 dark:border-white/10
-
-        backdrop-blur-[12px] backdrop-saturate-150
-        shadow-lg shadow-black/5
-
-        relative
-      "
-        style={{
-          filter: "url(#liquid-glass)",
-        }}
+        className="hidden liquid-nav md:flex gap-3 items-center px-4 md:px-5 py-2 md:py-3 rounded-2xl md:rounded-3xl text-gray-700 dark:text-gray-20 bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 backdrop-blur-[12px] backdrop-saturate-150 shadow-xs relative"
+        // style={{
+        //   filter: "url(#liquid-glass)",
+        // }}
       >
-        <h1>Monaski</h1>
+        <Link href="/" className="hidden md:block">
+          Monaski
+        </Link>
         <Separator
           orientation="vertical"
-          className="ml-2 data-[orientation=vertical]:h-6"
+          className="hidden md:block ml-2 data-[orientation=vertical]:h-6"
         />
         {navItems.map((item, i) => {
-          const commonProps = {
-            key: i,
-            className:
-              "group relative flex items-center justify-center p-2 rounded-xl",
-          };
-
           if (item.download) {
             return (
-              <a key={item.label} href={item.link} download className="group relative flex items-center justify-center p-2 rounded-xl">
+              <a
+                key={item.label}
+                href={item.link}
+                download
+                className="group relative flex items-center justify-center p-2 rounded-xl"
+              >
                 <NavItemContent icon={item.icon} label={item.label} />
               </a>
             );
@@ -142,31 +142,34 @@ const Header = () => {
           Hire me
         </Button>
       </nav>
-      {/* {mounted && (
-          <div className="fixed top-10 right-0 z-20">
-            <StaggeredMenu
-              isFixed={true}
-              position="right"
-              items={menuItems}
-              socialItems={socialItems}
-              displaySocials={true}
-              displayItemNumbering={true}
-              menuButtonColor="#F97316"
-              openMenuButtonColor="#F97316"
-              changeMenuColorOnOpen={true}
-              colors={["#C55A11", "#F97316"]}
-              accentColor="#F97316"
-              onMenuOpen={() => console.log("Menu opened")}
-              onMenuClose={() => console.log("Menu closed")}
-              className="font-heading sm:hidden"
-              renderMenuContent={(isOpen) =>
-                isOpen && (
-                  <ModeToggle className="text-black dark:text-white pr-10" />
-                )
-              }
-            />
-          </div>
-        )} */}
+      <div className="flex md:hidden fixed top-6 right-7 z-20 bg-gray-50 px-10 py-4 rounded-full">
+
+      {mounted && (
+        <div className="fixed top-10 right-0 z-20 after:bg-amber-800 after:p-10 after:h-10 after:fixed after:bottom-0 after:content-['']">
+          <StaggeredMenu
+            isFixed={true}
+            position="right"
+            items={menuItems}
+            socialItems={socialItems}
+            displaySocials={true}
+            displayItemNumbering={true}
+            menuButtonColor="#F97316"
+            openMenuButtonColor="#F97316"
+            changeMenuColorOnOpen={true}
+            colors={["#C55A11", "#F97316"]}
+            accentColor="#F97316"
+            onMenuOpen={() => console.log("Menu opened")}
+            onMenuClose={() => console.log("Menu closed")}
+            className="font-heading sm:hidden"
+            renderMenuContent={(isOpen) =>
+              isOpen && (
+                <ModeToggle className="text-black dark:text-white pr-10" />
+              )
+            }
+          />
+        </div>
+      )}
+      </div>
     </header>
   );
 };

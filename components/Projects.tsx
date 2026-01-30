@@ -10,8 +10,8 @@ const Projects = () => {
   const router = useRouter();
 
   return (
-    <section className="mt-10 sm:mt-[200px] relative flex justify-center items-center flex-col px-3 lg:px-50">
-      <div className="w-full max-w-4xl">
+    <section className="mt-14 sm:mt-[200px] relative flex justify-center items-center flex-col px-3 lg:px-50">
+      <div className="w-full max-w-4xl mt-6 mb-14">
 
       <h1 className="text-3xl sm:text-5xl font-heading ml-1 text-center">My Projects</h1>
       <h1 className="text-gray-700 dark:text-white/80 text-[1.1rem] sm:text-[1.2rem] ml-1 mt-2 text-center">

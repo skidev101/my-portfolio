@@ -36,9 +36,11 @@ export default function TechStack() {
     if (!containerRef.current) return;
 
     const totalWidth = containerRef.current.scrollWidth / 2;
+    const speed = 20; // pixels per second (lower = slower)
+    const duration = totalWidth / speed;
 
     animationRef.current = animate(x, [0, -totalWidth], {
-      duration: 35,
+      duration,
       ease: "linear",
       repeat: Infinity,
     });
@@ -47,11 +49,13 @@ export default function TechStack() {
   }, [x]);
 
   return (
-    <section className="py-12 md:py-22 bg-transparent text-white overflow-hidden">
-      <div className="font-heading max-w-4xl mx-auto text-center text-black overflow-hidden mt-10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Stack I use</h2>
+    <section className="px-3 py-12 md:py-22 bg-transparent text-white overflow-hidden">
+      <div className=" max-w-4xl mx-auto text-center text-black overflow-hidden mt-10">
+        <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+          Stack I use
+        </h2>
 
-        <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto">
+        <p className="text-md md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto">
           Technologies I work with to build products that solve real problems
         </p>
 

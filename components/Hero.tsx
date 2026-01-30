@@ -23,7 +23,7 @@ const Hero = () => {
     <section
       ref={heroRef}
       id="home"
-      className="relative flex justify-center flex-col min-h-screen"
+      className="relative flex justify-center flex-col"
     >
       <div className="relative min-h-screen overflow-hidden">
         <motion.div
@@ -33,21 +33,21 @@ const Hero = () => {
           <BgPattern />
         </motion.div>
 
-        <div className="mt-20 flex flex-col justify-center items-centermd:flex-row px-2 md:px-4 lg:px-22">
-          <div className="relative flex flex-col justify-left md:justify-center items-center text-left md:text-center py-[30px] md:py-[50px] w-full">
+        <div className="mt-20 flex flex-col justify-center items-centermd:flex-row md:px-4 lg:px-22">
+          <div className="relative flex flex-col justify-left md:justify-center items-left md:items-center text-left md:text-center pb-[100px] md:py-[50px] w-full">
             <motion.div style={{ y: globeY }}>
               <Image
-                src="/white-globe.png"
-                alt="globe"
-                width={150}
-                height={150}
-                className="object-cover invert-100 dark:invert-0 mt-10 lg:mt-0"
+                src="/dp.png"
+                alt="profile-dp"
+                width={140}
+                height={140}
+                className="w-[110px] md:w-[140px] h-[110px] md:h-[140px] object-cover mt-10 ml-3 md:mt-0 rounded-full"
               />
             </motion.div>
 
             <motion.div
               style={{ y: textY }}
-              className="mt-2 ml-4 max-w-3xl text-left md:text-center"
+              className="mt-4 ml-4 max-w-3xl text-left md:text-center"
             >
               <BlurText
                 text="Hi, I'm Ethan."
@@ -85,7 +85,7 @@ const Hero = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 2, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="flex justify-center mt-6 gap-3"
+                className="flex justify-left md:justify-center mt-6 gap-3"
               >
                 <Button
                   onClick={() => console.log("hire me!!")}
