@@ -88,7 +88,11 @@ const Hero = () => {
                 className="flex justify-left md:justify-center mt-6 gap-3"
               >
                 <Button
-                  onClick={() => console.log("hire me!!")}
+                  onClick={() => {
+                    document.getElementById("contact")?.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                  }}
                   className="flex items-center gap-2 hover:px-4 text-white rounded-full hover:cursor-pointer hover:scale-x-105 transition-all duration-300 active:scale-95"
                 >
                   Hire Me

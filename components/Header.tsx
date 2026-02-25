@@ -1,7 +1,7 @@
 "use client";
 
 import { FileText, Github, Home, Linkedin, Twitter } from "lucide-react";
-import { ModeToggle } from "./ModeToggle";
+// import { ModeToggle } from "./ModeToggle";
 import Link from "next/link";
 import StaggeredMenu from "./StaggeredMenu";
 import { useState, useEffect } from "react";
@@ -71,7 +71,7 @@ const Header = () => {
       label: "Resume",
       icon: <FileText className="size-5" />,
       link: "http://example.com/resume.pdf",
-      download: true
+      download: true,
     },
   ];
 
@@ -100,6 +100,7 @@ const Header = () => {
         <Link href="/" className="hidden md:block">
           Monaski
         </Link>
+        {/* <ModeToggle /> */}
         <Separator
           orientation="vertical"
           className="hidden md:block ml-2 data-[orientation=vertical]:h-6"
@@ -138,37 +139,43 @@ const Header = () => {
           className="hidden sm:flex mr-2 data-[orientation=vertical]:h-6"
         />
 
-        <Button className="hidden sm:flex bg-gray-200 rounded-xl hover:text-white transition-all duration-300 hover:px-5">
+        <Button
+          onClick={() => {
+            document.getElementById("contact")?.scrollIntoView({
+              behavior: "smooth",
+            });
+          }}
+          className="hidden sm:flex bg-gray-200 rounded-xl hover:text-white transition-all duration-300 hover:px-5"
+        >
           Hire me
         </Button>
       </nav>
-      <div className="flex md:hidden fixed top-6 right-7 z-20 bg-gray-50 px-10 py-4 rounded-full">
-
-      {mounted && (
-        <div className="fixed top-10 right-0 z-20 after:bg-amber-800 after:p-10 after:h-10 after:fixed after:bottom-0 after:content-['']">
-          <StaggeredMenu
-            isFixed={true}
-            position="right"
-            items={menuItems}
-            socialItems={socialItems}
-            displaySocials={true}
-            displayItemNumbering={true}
-            menuButtonColor="#F97316"
-            openMenuButtonColor="#F97316"
-            changeMenuColorOnOpen={true}
-            colors={["#C55A11", "#F97316"]}
-            accentColor="#F97316"
-            onMenuOpen={() => console.log("Menu opened")}
-            onMenuClose={() => console.log("Menu closed")}
-            className="font-heading sm:hidden"
-            renderMenuContent={(isOpen) =>
-              isOpen && (
-                <ModeToggle className="text-black dark:text-white pr-10" />
-              )
-            }
-          />
-        </div>
-      )}
+      <div className="flex sm:hidden fixed top-6 right-7 z-20 bg-gray-50 px-10 py-4 rounded-full">
+        {mounted && (
+          <div className="fixed top-10 right-0 z-20 after:bg-amber-800 after:p-10 after:h-10 after:fixed after:bottom-0 after:content-['']">
+            <StaggeredMenu
+              isFixed={true}
+              position="right"
+              items={menuItems}
+              socialItems={socialItems}
+              displaySocials={true}
+              displayItemNumbering={true}
+              menuButtonColor="#F97316"
+              openMenuButtonColor="#F97316"
+              changeMenuColorOnOpen={true}
+              colors={["#C55A11", "#F97316"]}
+              accentColor="#F97316"
+              onMenuOpen={() => console.log("Menu opened")}
+              onMenuClose={() => console.log("Menu closed")}
+              className="font-heading sm:hidden"
+              // renderMenuContent={(isOpen) =>
+              //   isOpen && (
+              //     <ModeToggle className="text-black dark:text-white pr-10" />
+              //   )
+              // }
+            />
+          </div>
+        )}
       </div>
     </header>
   );

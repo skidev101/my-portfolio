@@ -4,7 +4,7 @@ import { Meteors } from "./ui/meteors";
 const CallToAction = () => {
   return (
     <section
-      id="about"
+      id="contact"
       className="mt-18 sm:mt-10 flex flex-col max-h-max px-3 lg:px-60 sm:py-20"
     >
       <div className="w-full text-center bg-card sm:px-0 py-6 rounded-t-4xl sm:rounded-t-[150px] border border-gray-300 dark:border-gray-500">
