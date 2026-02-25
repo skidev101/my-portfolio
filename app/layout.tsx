@@ -90,16 +90,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${apple.variable} ${lato.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SvgFilters />
-          <Header />
-          {children}
-        </ThemeProvider>
+        <SvgFilters />
+        <Header />
+        {children}
       </body>
     </html>
   );
