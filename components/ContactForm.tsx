@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { Field, FieldError, FieldGroup } from "./ui/field";
@@ -33,6 +33,15 @@ const ContactForm = () => {
       message: "",
     },
   });
+
+  useEffect(() => {
+    if (sent) {
+      const timer = setTimeout(() => {
+        setSent(false);
+      }, 3000); // Reverts after 3 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [sent]);
 
   const onSubmit = async (data: ContactFormSchema) => {
     setIsLoading(true);
@@ -171,6 +180,8 @@ const ContactForm = () => {
             >
               {isLoading ? (
                 <Loader2 className="size-4 animate-spin" />
+              ) : sent ? (
+                "Message sent!"
               ) : (
                 "Send message"
               )}
