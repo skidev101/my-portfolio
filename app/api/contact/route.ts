@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const data = await req.json();
-    if (data) {
+    if (!data) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
