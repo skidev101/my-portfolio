@@ -3,7 +3,7 @@ import { ArrowUpRight, GitBranch, Radio } from "lucide-react";
 const CurrentSignal = () => (
   <section className="mx-auto w-[calc(100%_-_32px)] max-w-[960px] py-20 sm:w-[calc(100%_-_48px)] sm:py-28">
     <div className="relative overflow-hidden bg-zinc-900 px-6 py-8 sm:px-10 sm:py-10">
-      <div aria-hidden="true" className="absolute -right-10 -bottom-20 h-64 w-24 rotate-[22deg] bg-signal" />
+      <div aria-hidden="true" className="absolute -right-8 -bottom-16 h-48 w-10 rotate-[22deg] bg-signal/80" />
       <div className="relative z-10 grid gap-10 md:grid-cols-[1fr_240px] md:items-end">
         <div>
           <p className="technical-label flex items-center gap-2 text-signal"><Radio size={13} /> Current signal</p>
