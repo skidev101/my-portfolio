@@ -15,10 +15,6 @@
     box-sizing: border-box;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-
   body {
     @apply m-0 bg-canvas text-ink font-sans antialiased;
   }

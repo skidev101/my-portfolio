@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Header from "@/components/Header";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const display = localFont({ src: "../fonts/BricolageGrotesque.ttf", variable: "--font-apple", display: "swap" });
@@ -16,5 +17,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={`${display.variable} ${body.variable}`}><Header />{children}</body></html>;
+  return <html lang="en"><body className={`${display.variable} ${body.variable}`}><SmoothScroll /><Header />{children}</body></html>;
 }

@@ -7,7 +7,7 @@ const Hero = () => (
   <section id="home" className="relative mx-auto flex min-h-[820px] w-[calc(100%_-_32px)] max-w-[960px] flex-col justify-between pb-8 pt-28 sm:min-h-screen sm:w-[calc(100%_-_48px)] sm:pt-36">
     <div className="technical-label relative z-10 flex justify-between text-copy"><span>Independent engineer / 001</span><span>Nigeria · Remote</span></div>
 
-    <div aria-hidden="true" className="pointer-events-none absolute top-[25%] right-[-12vw] hidden h-72 w-[min(48vw,520px)] opacity-50 sm:block">
+    <div aria-hidden="true" className="pointer-events-none absolute top-[25%] right-[-12vw] hidden h-72 w-[min(48vw,520px)] opacity-70 [mask-image:linear-gradient(to_right,transparent_0%,black_36%,black_100%)] sm:block">
       <Threads color={[150, 150, 144]} amplitude={0.65} distance={0.35} />
       <span className="technical-label absolute right-0 bottom-2 text-zinc-600">Signal / 001</span>
     </div>

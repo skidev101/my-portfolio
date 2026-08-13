@@ -27,6 +27,7 @@ const Threads = ({
     let frame = 0;
     let animationFrame = 0;
     let pointer = { x: 0.5, y: 0.5 };
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const resize = () => {
       const ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -64,8 +65,10 @@ const Threads = ({
         context.stroke();
       }
 
-      frame += 1;
-      animationFrame = requestAnimationFrame(draw);
+      if (!reduceMotion) {
+        frame += 1;
+        animationFrame = requestAnimationFrame(draw);
+      }
     };
 
     resize();
