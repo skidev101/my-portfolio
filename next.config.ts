@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
         hostname: "image.thum.io",
         pathname: "/**"
       },
+      {
+        protocol: "https",
+        hostname: "cdn.simpleicons.org",
+        pathname: "/**"
+      },
     ]
   },
   typescript: {
