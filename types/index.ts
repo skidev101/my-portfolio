@@ -3,11 +3,16 @@ export interface Project {
   image: string;
   title: string;
   subtitle: string;
-  description?: string;
+  description: string;
+  role: string;
+  year: string;
+  category: string;
+  outcome: string;
+  highlights: string[];
   links: {
-    live?: string;
-    github?: string;
+    live: string;
+    github: string;
   };
-  stack?: string[];
-  images?: string[];
+  stack: string[];
+  images: string[];
 }

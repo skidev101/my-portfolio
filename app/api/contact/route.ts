@@ -1,162 +1,34 @@
+import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 
-export async function POST(req: NextRequest) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
+const contactSchema = z.object({
+  name: z.string().trim().min(3).max(100),
+  email: z.email().max(200),
+  message: z.string().trim().min(5).max(5000),
+});
+
+const escapeHtml = (value: string) =>
+  value.replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character] ?? character);
+
+export async function POST(request: Request) {
   try {
-    const data = await req.json();
-    if (!data) {
-      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
-    }
+    const parsed = contactSchema.safeParse(await request.json());
+    if (!parsed.success) return NextResponse.json({ error: "Invalid contact details" }, { status: 400 });
 
-    const html = `
-    <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Contact Message</title>
-  </head>
-  <body
-    style="
-      margin: 0;
-      padding: 0;
-      background-color: #f7f7f8;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-        Roboto, Helvetica, Arial, sans-serif;
-      color: #1f2937;
-    "
-  >
-    <table
-      width="100%"
-      cellpadding="0"
-      cellspacing="0"
-      role="presentation"
-      style="padding: 32px 16px;"
-    >
-      <tr>
-        <td align="center">
-          <table
-            width="100%"
-            cellpadding="0"
-            cellspacing="0"
-            role="presentation"
-            style="
-              max-width: 560px;
-              background-color: #ffffff;
-              border-radius: 12px;
-              box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-              padding: 32px;
-            "
-          >
-            <!-- Header -->
-            <tr>
-              <td style="padding-bottom: 24px;">
-                <h1
-                  style="
-                    margin: 0;
-                    font-size: 20px;
-                    font-weight: 600;
-                    color: #111827;
-                  "
-                >
-                  New contact message
-                </h1>
-                <p
-                  style="
-                    margin: 8px 0 0;
-                    font-size: 14px;
-                    color: #6b7280;
-                  "
-                >
-                  Someone reached out through your portfolio.
-                </p>
-              </td>
-            </tr>
-
-            <!-- Meta info -->
-            <tr>
-              <td style="padding-bottom: 24px;">
-                <table width="100%" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td
-                      style="
-                        font-size: 14px;
-                        padding: 6px 0;
-                        color: #374151;
-                      "
-                    >
-                      <strong>Name:</strong> ${data.name}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      style="
-                        font-size: 14px;
-                        padding: 6px 0;
-                        color: #374151;
-                      "
-                    >
-                      <strong>Email:</strong> ${data.email}
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-
-            <!-- Message -->
-            <tr>
-              <td
-                style="
-                  padding: 20px;
-                  background-color: #f9fafb;
-                  border-radius: 8px;
-                  font-size: 15px;
-                  line-height: 1.6;
-                  color: #111827;
-                "
-              >
-                ${data.message.replace(/\n/g, "<br />")}
-              </td>
-            </tr>
-
-            <!-- Footer -->
-            <tr>
-              <td
-                style="
-                  padding-top: 24px;
-                  font-size: 12px;
-                  color: #9ca3af;
-                  text-align: center;
-                "
-              >
-                Sent from your portfolio contact form · ${new Date().toLocaleString()}
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </body>
-</html>
-
-  `;
-
-    const result = await resend.emails.send({
+    const { name, email, message } = parsed.data;
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const { error } = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: ["skidev101@gmail.com"],
-      replyTo: data.email,
-      subject: `New portfolio message`,
-      html,
+      replyTo: email,
+      subject: `Portfolio enquiry from ${name}`,
+      html: `<h1>New portfolio enquiry</h1><p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>`,
     });
 
-    console.log("email sent", result);
-    return NextResponse.json({ success: true }, { status: 200 });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json(
-      { success: false, error: "Failed to send email" },
-      { status: 500 },
-    );
+    if (error) return NextResponse.json({ error: "Email delivery failed" }, { status: 502 });
+    return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
   }
 }

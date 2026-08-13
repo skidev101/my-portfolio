@@ -1,196 +1,42 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { Field, FieldError, FieldGroup } from "./ui/field";
-import { Card, CardContent, CardDescription, CardHeader } from "./ui/card";
+import { Card, CardContent } from "./ui/card";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
 
-const contactSchema = z.object({
-  name: z.string().min(3, { message: "Name is too short" }),
-  email: z.email({ message: "Enter a valid email address" }),
-  message: z
-    .string()
-    .min(5, { message: "Message should be at least 5 characters" }),
-});
-
+const contactSchema = z.object({ name: z.string().min(3, { message: "Name is too short" }), email: z.email({ message: "Enter a valid email address" }), message: z.string().min(5, { message: "Message should be at least 5 characters" }) });
 type ContactFormSchema = z.infer<typeof contactSchema>;
 
 const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [sent, setSent] = useState(false);
-
-  const form = useForm<ContactFormSchema>({
-    resolver: zodResolver(contactSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
-  });
-
-  useEffect(() => {
-    if (sent) {
-      const timer = setTimeout(() => {
-        setSent(false);
-      }, 3000); // Reverts after 3 seconds
-      return () => clearTimeout(timer);
-    }
-  }, [sent]);
-
+  const [error, setError] = useState("");
+  const form = useForm<ContactFormSchema>({ resolver: zodResolver(contactSchema), defaultValues: { name: "", email: "", message: "" } });
   const onSubmit = async (data: ContactFormSchema) => {
     setIsLoading(true);
+    setError("");
+    setSent(false);
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      const result = await res.json();
-
-      if (res.ok) {
-        setSent(true);
-        form.reset();
-      } else {
-        console.error("Error sending email:", result.error);
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
+      const response = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+      if (!response.ok) throw new Error("Request failed");
+      setSent(true);
+      form.reset();
+    } catch {
+      setError("Message failed to send. Email me directly instead.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  return (
-    <Card className="w-full max-w-3xl mx-auto bg-transparent border-none shadow-none">
-      <CardHeader className="px-0 text-center">
-        <CardDescription className="hidden text-base text-gray-600">
-          Tell me about your project
-        </CardDescription>
-      </CardHeader>
-
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        <CardContent className="px-0 space-y-6">
-          {/* Name + Email */}
-          <FieldGroup className="flex flex-col sm:flex-row gap-4">
-            <Controller
-              name="name"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <Input
-                    {...field}
-                    placeholder="Full name"
-                    autoComplete="off"
-                    aria-invalid={fieldState.invalid}
-                    className="
-                      h-[48px]
-                      rounded-xl
-                      bg-transparent
-                      border border-gray-300
-                      focus:border-gray-900 focus:ring-0
-                      placeholder:text-gray-400
-                    "
-                  />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-
-            <Controller
-              name="email"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <Input
-                    {...field}
-                    placeholder="Email address"
-                    autoComplete="off"
-                    aria-invalid={fieldState.invalid}
-                    className="
-                      h-[48px]
-                      rounded-xl
-                      bg-transparent
-                      border border-gray-300
-                      focus:border-gray-900 focus:ring-0
-                      placeholder:text-gray-400
-                    "
-                  />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-          </FieldGroup>
-
-          {/* Message */}
-          <FieldGroup>
-            <Controller
-              name="message"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <Textarea
-                    {...field}
-                    rows={6}
-                    placeholder="Tell me a bit about what you’re building…"
-                    aria-invalid={fieldState.invalid}
-                    className="
-                      min-h-40
-                      resize-none
-                      rounded-xl
-                      bg-transparent
-                      border border-gray-300
-                      focus:border-gray-900 focus:ring-0
-                      placeholder:text-gray-400
-                    "
-                  />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-          </FieldGroup>
-
-          {/* Submit */}
-          <div className="pt-2">
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="
-                h-[48px]
-                w-full
-                rounded-xl
-                bg-gray-900
-                text-white
-                hover:bg-gray-800
-                active:scale-[0.98]
-              "
-            >
-              {isLoading ? (
-                <Loader2 className="size-4 animate-spin" />
-              ) : sent ? (
-                "Message sent!"
-              ) : (
-                "Send message"
-              )}
-            </Button>
-          </div>
-        </CardContent>
-      </form>
-    </Card>
-  );
+  return <Card className="w-full max-w-none border-0 bg-transparent p-0 shadow-none"><form onSubmit={form.handleSubmit(onSubmit)}><CardContent className="space-y-5 p-0"><FieldGroup className="flex flex-col gap-4 sm:flex-row"><Controller name="name" control={form.control} render={({ field, fieldState }) => <Field data-invalid={fieldState.invalid}><Input {...field} autoComplete="name" placeholder="Full name" aria-label="Full name" aria-invalid={fieldState.invalid} className="h-12 rounded-none border-0 border-b border-rule bg-transparent px-0 shadow-none focus-visible:border-signal focus-visible:ring-0" />{fieldState.invalid && <FieldError errors={[fieldState.error]} />}</Field>} /><Controller name="email" control={form.control} render={({ field, fieldState }) => <Field data-invalid={fieldState.invalid}><Input {...field} type="email" autoComplete="email" placeholder="Email address" aria-label="Email address" aria-invalid={fieldState.invalid} className="h-12 rounded-none border-0 border-b border-rule bg-transparent px-0 shadow-none focus-visible:border-signal focus-visible:ring-0" />{fieldState.invalid && <FieldError errors={[fieldState.error]} />}</Field>} /></FieldGroup><Controller name="message" control={form.control} render={({ field, fieldState }) => <Field data-invalid={fieldState.invalid}><Textarea {...field} rows={5} placeholder="Tell me a bit about what you’re building..." aria-label="Project details" aria-invalid={fieldState.invalid} className="min-h-32 resize-none rounded-none border-0 border-b border-rule bg-transparent px-0 shadow-none focus-visible:border-signal focus-visible:ring-0" />{fieldState.invalid && <FieldError errors={[fieldState.error]} />}</Field>} />{error && <p role="alert" className="font-mono text-xs text-red-700">{error}</p>}<Button type="submit" disabled={isLoading} className="h-11 rounded-none bg-ink px-5 font-mono text-[0.68rem] uppercase text-canvas hover:bg-signal">{isLoading ? <Loader2 className="size-4 animate-spin" /> : sent ? "Message sent" : "Send message"}</Button></CardContent></form></Card>;
 };
 
 export default ContactForm;

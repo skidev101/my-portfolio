@@ -1,26 +1,11 @@
 import About from "@/components/About";
 import CallToAction from "@/components/CallToAction";
-import Hero from "@/components/Hero";
-import LineSeparator from "@/components/LineSeparator";
-import Projects from "@/components/Projects";
+import CurrentSignal from "@/components/CurrentSignal";
 import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
 import TechStack from "@/components/TechStack";
 
-const page = () => {
-  return (
-    <>
-      <Hero />
-      <About />
-      <LineSeparator />
-      <Projects />
-      <LineSeparator />
-      <TechStack />
-      <LineSeparator />
-      <CallToAction />
-      <LineSeparator />
-      <Footer />
-    </>
-  );
-};
-
-export default page;
+export default function Home() {
+  return <main><Hero /><About /><Projects /><CurrentSignal /><TechStack /><CallToAction /><Footer /></main>;
+}

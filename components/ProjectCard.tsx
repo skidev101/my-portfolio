@@ -1,75 +1,16 @@
-"use client";
-
-import { Project } from "@/types";
 import Image from "next/image";
-import { ArrowUpRight, ChevronRight } from "lucide-react";
-import { Button } from "./ui/button";
-import { useRouter } from "next/navigation";
-import LinkButton from "./LinkButton";
-const ProjectCard = ({
-  slug,
-  image,
-  title,
-  subtitle,
-  links,
-  stack,
-}: Project) => {
-  const router = useRouter();
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { Project } from "@/types";
 
-  return (
-    <div className="w-full px-4 py-7 rounded-3xl bg-card border dark:bg-[#201e1e] dark:shadow-md">
-      {/* Project Image */}
-      <div className="relative w-full h-50 rounded-3xl overflow-hidden group">
-        <Image
-          src={`/images/${image}`}
-          alt={title}
-          fill
-          className="object-cover rounded-3xl transition-transform duration-300 ease-in-out group-hover:scale-105"
-        />
-      </div>
-
-      {/* Project Info */}
-      <div className="mt-4">
-        <h2 className="text-[1.3rem] font-semibold text-gray-900 dark:text-white">
-          {title}
-        </h2>
-        <p className="text-[1rem] text-gray-600 dark:text-gray-400 mt-1">
-          {subtitle}
-        </p>
-
-        {/* Tech Stack Preview */}
-        {stack && (
-          <div className="flex flex-wrap gap-2 mt-3 text-sm text-gray-500 dark:text-gray-400">
-            {stack.slice(0, 3).map((tech) => (
-              <span key={tech}>{tech}</span>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Actions */}
-      <div className="flex items-center gap-3 mt-5">
-          {/* <LinkButton
-            text="Live Demo"
-            externalLink={links?.live as string}
-            icon={<ArrowUpRight className="size-4" />}
-            
-          /> */}
-
-          <Button
-            onClick={() => router.push(`/projects/${slug}`)}
-            className="group flex items-center gap-1 rounded-xl transition-all duration-300 active:scale-95
-            text-gray-700 dark:text-gray-300
-            bg-gray-200 dark:bg-gray-800
-            hover:bg-gray-300 dark:hover:bg-gray-700
-            border border-gray-300 dark:border-gray-700"
-          >
-            View Details
-            <ChevronRight className="size-4 group-hover:translate-x-0.5 transition-all duration-200" />
-          </Button>
-      </div>
-    </div>
-  );
-};
+const ProjectCard = ({ slug, image, title, subtitle, links, stack, index, category, year, role }: Project & { index?: number }) => (
+  <article>
+    <Link href={`/projects/${slug}`} className="group relative block aspect-[1.35] overflow-hidden bg-zinc-900">
+      <Image src={image} alt={`${title} project preview`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover saturate-[.65] transition duration-500 group-hover:scale-[1.035] group-hover:saturate-100" />
+      <span className="technical-label absolute top-3.5 left-3.5 z-10 text-white">{String((index ?? 0) + 1).padStart(2, "0")}</span><span className="absolute top-3.5 right-3.5 z-10 flex items-center gap-1 font-mono text-[0.68rem] uppercase text-white opacity-0 transition-opacity group-hover:opacity-100">Inspect <ArrowUpRight size={15} /></span>
+    </Link>
+    <div className="grid gap-3 pt-4 sm:grid-cols-[1.3fr_1fr]"><div><h3 className="font-display text-[1.55rem] font-normal">{title}</h3><p className="mt-1 text-sm text-copy">{subtitle}</p></div><div className="technical-label flex flex-wrap content-start gap-x-2 gap-y-1 text-copy">{stack.slice(0, 3).map((tech) => <span key={tech}>{tech}{tech !== stack.slice(0, 3).at(-1) && <b className="ml-2 font-normal text-signal">/</b>}</span>)}</div><div className="technical-label col-span-full flex flex-wrap items-center gap-x-4 gap-y-2 pt-2.5"><span className="text-signal">{category}</span><span>{year}</span><span>{role}</span><Link className="ml-auto transition-colors hover:text-signal" href={`/projects/${slug}`}>Case file <span className="text-signal">↗</span></Link>{links.live && <a className="transition-colors hover:text-signal" href={links.live} target="_blank" rel="noreferrer">Live <span className="text-signal">↗</span></a>}</div></div>
+  </article>
+);
 
 export default ProjectCard;

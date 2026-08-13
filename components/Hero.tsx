@@ -1,123 +1,40 @@
-"use client";
-
-import { useRef } from "react";
 import Image from "next/image";
-import BgPattern from "./BgPattern";
-import BlurText from "./BlurText";
-import { Button } from "./ui/button";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Globe } from "./ui/globe";
+import Link from "next/link";
+import { ArrowDown, ArrowUpRight, Github } from "lucide-react";
 
-const Hero = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
+const Hero = () => (
+  <section id="home" className="relative mx-auto flex min-h-[860px] w-[calc(100%_-_32px)] max-w-[960px] flex-col justify-between overflow-visible pb-8 pt-28 sm:min-h-screen sm:w-[calc(100%_-_48px)] sm:pt-36">
+    <div className="technical-label relative z-10 flex justify-between text-copy"><span>Independent engineer / 001</span><span>Nigeria · Remote</span></div>
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const globeY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+    <div aria-hidden="true" className="pointer-events-none absolute top-[20%] right-[-18vw] left-[-18vw] h-[58%] overflow-hidden">
+      <div className="absolute top-[14%] left-[41%] h-[72%] w-[16vw] min-w-28 -skew-x-[22deg] bg-signal" />
+      <div className="absolute top-[4%] left-[54%] h-[84%] w-px rotate-[22deg] bg-zinc-700" />
+      <div className="absolute top-[61%] left-[25%] h-px w-[62%] rotate-[-11deg] bg-zinc-800" />
+      <div className="technical-label absolute top-[12%] left-[58%] text-zinc-600">Axis / 22°</div>
+      <div className="technical-label absolute right-[13%] bottom-[20%] text-zinc-600">Signal / Monaski</div>
+    </div>
 
-  return (
-    <section
-      ref={heroRef}
-      id="home"
-      className="relative flex justify-center flex-col"
-    >
-      <div className="relative min-h-screen overflow-hidden">
-        <motion.div
-          style={{ y: bgY }}
-          className="absolute inset-0 -z-10 -mt-10"
-        >
-          <BgPattern />
-        </motion.div>
-
-        <div className="mt-20 flex flex-col justify-center items-centermd:flex-row md:px-4 lg:px-22">
-          <div className="relative flex flex-col justify-left md:justify-center items-left md:items-center text-left md:text-center pb-[100px] md:py-[50px] w-full">
-            <motion.div style={{ y: globeY }}>
-              <Image
-                src="/dp.png"
-                alt="profile-dp"
-                width={140}
-                height={140}
-                className="w-[110px] md:w-[140px] h-[110px] md:h-[140px] object-cover mt-10 ml-3 md:mt-0 rounded-full"
-              />
-            </motion.div>
-
-            <motion.div
-              style={{ y: textY }}
-              className="mt-4 ml-4 max-w-3xl text-left md:text-center"
-            >
-              <BlurText
-                text="Hi, I'm Ethan."
-                delay={150}
-                animateBy="words"
-                direction="bottom"
-                className="flex justify-left md:justify-center text-5xl sm:text-7xl font-heading"
-              />
-              <BlurText
-                text="Web Developer"
-                delay={300}
-                animateBy="words"
-                direction="bottom"
-                className="flex justify-left md:justify-center text-5xl sm:text-7xl font-heading"
-              />
-
-              <motion.p
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.8,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 20,
-                }}
-                className="text-gray-600 dark:text-gray-300 mt-4 text-lg"
-              >
-                I build modern, scalable web solutions with a focus on
-                performance, usability, and clean design that deliver real
-                business value.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 2, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="flex justify-left md:justify-center mt-6 gap-3"
-              >
-                <Button
-                  onClick={() => {
-                    document.getElementById("contact")?.scrollIntoView({
-                      behavior: "smooth",
-                    });
-                  }}
-                  className="flex items-center gap-2 hover:px-4 text-white rounded-full hover:cursor-pointer hover:scale-x-105 transition-all duration-300 active:scale-95"
-                >
-                  Hire Me
-                </Button>
-                <Button className="hover:px-4 text-gray-700 dark:text-gray-300 hover:text-black bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700 hover:bg-gray-300 active:scale-95 hover:cursor-pointer rounded-full">
-                  View Resume
-                </Button>
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* <div>
-          <Image
-            src="/white-globe.png"
-            alt="globe"
-            width={250}
-            height={250}
-            className="object-cover invert-100 dark:invert-0 mt-10 lg:mt-0"
-          />
-          <Globe className="w-[100px] h-[100px] mt-40 mr-20 float-right" />
-        </div> */}
+    <div className="relative z-10 grid items-center gap-16 py-16 md:grid-cols-[minmax(0,1fr)_240px] md:gap-[8%] md:py-20">
+      <div>
+        <p className="technical-label flex items-center gap-2 text-copy"><span className="size-1.5 rounded-full bg-signal shadow-[0_0_14px_rgba(240,122,60,.8)]" /> Available for selected work</p>
+        <h1 className="mt-7 font-display text-[clamp(4.1rem,10vw,8rem)] font-medium leading-[0.76] tracking-[-0.055em] text-ink">MONA<br /><span className="ml-[11%] text-canvas [text-shadow:-1px_-1px_0_#f2f0ea,1px_-1px_0_#f2f0ea,-1px_1px_0_#f2f0ea,1px_1px_0_#f2f0ea]">SKI</span></h1>
+        <p className="mt-10 max-w-[500px] text-base leading-7 text-zinc-300 sm:text-[1.08rem]">Full-stack engineer building reliable systems and thoughtful digital products, from the interface people touch to the architecture underneath.</p>
+        <div className="mt-8 flex flex-wrap gap-2.5">
+          <Link href="#work" className="inline-flex min-h-11 items-center justify-center gap-2 bg-ink px-4 font-mono text-[0.68rem] uppercase text-canvas transition-colors hover:bg-signal"><span>Explore work</span><ArrowDown size={16} /></Link>
+          <a href="https://github.com/skidev101" target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 bg-zinc-900 px-4 font-mono text-[0.68rem] uppercase transition-colors hover:bg-zinc-800">37 repositories <Github size={16} /></a>
         </div>
       </div>
-    </section>
-  );
-};
+
+      <div className="relative mx-auto md:mr-0">
+        <div className="technical-label absolute -top-8 left-0 whitespace-nowrap text-zinc-500">Person behind the signal</div>
+        <div className="relative size-44 overflow-hidden rounded-full bg-zinc-800 ring-4 ring-canvas sm:size-[220px]"><Image src="/dp.png" alt="Ojomona Ethan Inedu, working as Monaski" fill priority sizes="(max-width: 640px) 176px, 220px" className="object-cover grayscale" /></div>
+        <span aria-hidden="true" className="absolute -right-4 bottom-3 size-9 rotate-45 bg-signal" />
+        <div className="technical-label absolute -right-3 -bottom-8 whitespace-nowrap text-zinc-500">Full stack / Product minded</div>
+      </div>
+    </div>
+
+    <div className="technical-label relative z-10 flex justify-between text-copy"><span>Selected systems below</span><ArrowUpRight size={15} /></div>
+  </section>
+);
 
 export default Hero;

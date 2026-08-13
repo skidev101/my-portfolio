@@ -8,7 +8,12 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.simpleicons.org",
         pathname: "/**"
-      }
+      },
+      {
+        protocol: "https",
+        hostname: "image.thum.io",
+        pathname: "/**"
+      },
     ]
   },
   typescript: {

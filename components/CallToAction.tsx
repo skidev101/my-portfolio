@@ -1,30 +1,10 @@
 import ContactForm from "./ContactForm";
-import { Meteors } from "./ui/meteors";
 
-const CallToAction = () => {
-  return (
-    <section
-      id="contact"
-      className="mt-18 sm:mt-10 flex flex-col max-h-max px-3 lg:px-60 sm:py-20"
-    >
-      <div className="w-full text-center bg-card sm:px-0 py-6 rounded-t-4xl sm:rounded-t-[150px] border border-gray-300 dark:border-gray-500">
-        <h1 className="text-black/90 dark:text-white/90 text-2xl sm:text-5xl font-heading">
-          Let's take your idea to the world
-        </h1>
-      </div>
-
-      <div className="relative overflow-hidden w-full min-h-[460px] sm:min-h-[390px] px-4 md:px-20 bg-card text-center mt-1 sm:mt-2 mb-6 rounded-2xl border border-gray-300 dark:border-gray-500">
-        <div className="absolute inset-0">
-          <Meteors />
-        </div>
-        <div className="relative z-10">
-          <ContactForm />
-        </div>
-      </div>
-      {/* <p className="text-[1.1rem] text-gray-600 dark:text-gray-300 mt-3">
-      </p> */}
-    </section>
-  );
-};
+const CallToAction = () => (
+  <section id="contact" className="mx-auto w-[calc(100%_-_32px)] max-w-[960px] py-20 sm:w-[calc(100%_-_48px)] sm:pt-32 sm:pb-24">
+    <div className="flex items-baseline gap-3 sm:gap-[18px]"><span className="technical-label text-signal">05</span><h2 className="font-display text-[1.8rem] font-normal tracking-[-0.03em] sm:text-[2.2rem]">Start a conversation</h2></div>
+    <div className="grid gap-9 pt-10 md:grid-cols-2 md:gap-[15%] md:pt-14"><div><p className="max-w-[430px] font-display text-[1.85rem] leading-[1.05] tracking-[-0.03em] sm:text-[2.1rem]">Have a product, system, or idea that needs a careful pair of hands?</p><a className="mt-8 inline-block border-b border-ink pb-1 font-mono text-[0.75rem] uppercase transition-colors hover:text-signal" href="mailto:skidev101@gmail.com">skidev101@gmail.com <span className="text-signal">↗</span></a></div><ContactForm /></div>
+  </section>
+);
 
 export default CallToAction;
