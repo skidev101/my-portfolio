@@ -17,9 +17,9 @@ const Hero = () => (
       className="pointer-events-none absolute top-[25%] right-[-12vw] hidden h-72 w-[min(48vw,520px)] opacity-70 [mask-image:linear-gradient(to_right,transparent_0%,black_36%,black_100%)] sm:block"
     >
       <Threads color={[150, 150, 144]} amplitude={0.65} distance={0.35} />
-      <span className="technical-label absolute right-0 bottom-2 text-zinc-600">
+      {/*<span className="technical-label absolute right-0 bottom-2 text-zinc-600">
         Signal / 001
-      </span>
+      </span>*/}
     </div>
 
     <div className="relative z-10 grid items-center gap-14 py-16 md:grid-cols-[minmax(0,1fr)_210px] md:gap-[9%] md:py-20">
