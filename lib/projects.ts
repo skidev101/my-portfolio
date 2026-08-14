@@ -3,7 +3,7 @@ import type { Project } from "@/types";
 export const projects: Project[] = [
   {
     slug: "jsyk",
-    image: "/images/project1.jpeg",
+    image: "/images/jsyk/jsyk-cta.png",
     title: "JSYK",
     subtitle: "Anonymous feedback platform",
     description:
