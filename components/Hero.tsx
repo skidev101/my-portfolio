@@ -64,7 +64,10 @@ const Hero = () => (
           Monaski / signal mark
         </div>
         <div className="relative grid size-40 place-items-center overflow-hidden bg-zinc-900 ring-1 ring-white/[0.08] sm:size-[190px]">
-          <div aria-hidden="true" className="absolute inset-0 opacity-70">
+          <div
+            aria-hidden="true"
+            className="absolute lg:hidden inset-0 opacity-70"
+          >
             {[18, 30, 42, 54, 66, 78].map((top, index) => (
               <span
                 key={top}
