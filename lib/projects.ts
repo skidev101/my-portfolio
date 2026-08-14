@@ -29,11 +29,12 @@ export const projects: Project[] = [
       "MongoDB",
       "Firebase",
       "Cloudinary",
+      "Redis",
     ],
     images: [
       "/images/jsyk/jsyk-landing.png",
       "/images/jsyk/jsyk-cta.png",
-      "/images/jsyk/jsyk-cta2.png",
+      "/images/jsyk/jsyk_cta2.png",
     ],
   },
   {
@@ -58,7 +59,14 @@ export const projects: Project[] = [
       live: "https://zury-web-theta.vercel.app/",
       github: "https://github.com/skidev101/zury",
     },
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "SQLite", "PWA"],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Express",
+      "Tailwind CSS",
+      "SQLite",
+      "PWA",
+    ],
     images: [
       "/images/zury/zury.png",
       "/images/zury/zury_1.png",
