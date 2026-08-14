@@ -2,67 +2,6 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    slug: "zury",
-    image: "/images/zury/zury.png",
-    title: "Zury",
-    subtitle: "Offline-aware academic companion for university students",
-    description:
-      "Zury brings daily schedules, weekly planning, PDF-based study help, conversational calendar actions, and project context into one focused workspace. I designed the product around the realities of African university students, including slow or unreliable networks, competing academic priorities, and the need for an interface that stays calm under pressure.",
-    role: "Product design & full-stack engineering",
-    year: "2026",
-    category: "AI product / Education",
-    outcome:
-      "A working academic operating system concept that turns scattered study obligations into a focused daily rhythm.",
-    highlights: [
-      "Offline-aware experience with local client caching",
-      "Daily briefing and realistic weekly planning flows",
-      "PDF-based study assistance and contextual AI actions",
-      "Responsive interface designed for low-bandwidth use",
-    ],
-    links: {
-      live: "https://zury-web-theta.vercel.app/",
-      github: "https://github.com/skidev101/zury",
-    },
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "SQLite", "PWA"],
-    images: [
-      "/images/zury/zury.png",
-      "/images/zury/zury_1.png",
-      "/images/zury/zury_2.png",
-      "/images/zury/zury_3.png",
-    ],
-  },
-  {
-    slug: "be-studio",
-    image:
-      "https://image.thum.io/get/width/1600/crop/900/noanimate/https://be-studio.vercel.app/",
-    title: "BE Graphic Studio",
-    subtitle: "Conversion-focused platform for a global brand agency",
-    description:
-      "I designed and developed BE Graphic Studio's digital platform to turn a broad creative service offering into a clear client journey. The site structures brand analysis, strategy, identity, repositioning, and growth services around business goals, then connects qualified visitors to consultation booking and contact flows.",
-    role: "Design & full-stack development",
-    year: "2026",
-    category: "Client platform / Creative agency",
-    outcome:
-      "A production agency website that communicates positioning, packages complex services, and routes prospective clients toward consultation.",
-    highlights: [
-      "Service architecture spanning six branding offers",
-      "Goal-led service recommendation and pricing presentation",
-      "Calendly consultation and direct contact flows",
-      "Responsive motion system and reusable service pages",
-    ],
-    links: {
-      live: "https://be-studio.vercel.app/",
-      github: "https://github.com/skidev101/be-studio",
-    },
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Resend"],
-    images: [
-      "/images/zury/zury.png",
-      "/images/zury/zury_1.png",
-      "/images/zury/zury_2.png",
-      "/images/zury/zury_3.png",
-    ],
-  },
-  {
     slug: "jsyk",
     image: "/images/project1.jpeg",
     title: "JSYK",
@@ -92,14 +31,75 @@ export const projects: Project[] = [
       "Cloudinary",
     ],
     images: [
-      "/images/project1.jpeg",
-      "/images/project2.jpeg",
-      "/images/project3.jpeg",
+      "/images/jsyk/jsyk-landing.png",
+      "/images/jsyk/jsyk-cta.png",
+      "/images/jsyk/jsyk-cta2.png",
     ],
   },
   {
+    slug: "zury",
+    image: "/images/zury/zury.png",
+    title: "Zury",
+    subtitle: "Offline-aware academic companion for university students",
+    description:
+      "Zury brings daily schedules, weekly planning, PDF-based study help, conversational calendar actions, and project context into one focused workspace. I designed the product around the realities of African university students, including slow or unreliable networks, competing academic priorities, and the need for an interface that stays calm under pressure.",
+    role: "Product design & full-stack engineering",
+    year: "2026",
+    category: "AI product / Education",
+    outcome:
+      "A working academic operating system concept that turns scattered study obligations into a focused daily rhythm.",
+    highlights: [
+      "Offline-aware experience with local client caching",
+      "Daily briefing and realistic weekly planning flows",
+      "PDF-based study assistance and contextual AI actions",
+      "Responsive interface designed for low-bandwidth use",
+    ],
+    links: {
+      live: "https://zury-web-theta.vercel.app/",
+      github: "https://github.com/skidev101/zury",
+    },
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "SQLite", "PWA"],
+    images: [
+      "/images/zury/zury.png",
+      "/images/zury/zury_1.png",
+      "/images/zury/zury_2.png",
+      "/images/zury/zury_3.png",
+    ],
+  },
+  // {
+  //   slug: "be-studio",
+  //   image:
+  //     "https://image.thum.io/get/width/1600/crop/900/noanimate/https://be-studio.vercel.app/",
+  //   title: "BE Graphic Studio",
+  //   subtitle: "Conversion-focused platform for a global brand agency",
+  //   description:
+  //     "I designed and developed BE Graphic Studio's digital platform to turn a broad creative service offering into a clear client journey. The site structures brand analysis, strategy, identity, repositioning, and growth services around business goals, then connects qualified visitors to consultation booking and contact flows.",
+  //   role: "Design & full-stack development",
+  //   year: "2026",
+  //   category: "Client platform / Creative agency",
+  //   outcome:
+  //     "A production agency website that communicates positioning, packages complex services, and routes prospective clients toward consultation.",
+  //   highlights: [
+  //     "Service architecture spanning six branding offers",
+  //     "Goal-led service recommendation and pricing presentation",
+  //     "Calendly consultation and direct contact flows",
+  //     "Responsive motion system and reusable service pages",
+  //   ],
+  //   links: {
+  //     live: "https://be-studio.vercel.app/",
+  //     github: "https://github.com/skidev101/be-studio",
+  //   },
+  //   stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Resend"],
+  //   images: [
+  //     "/images/zury/zury.png",
+  //     "/images/zury/zury_1.png",
+  //     "/images/zury/zury_2.png",
+  //     "/images/zury/zury_3.png",
+  //   ],
+  // },
+  {
     slug: "startuplens",
-    image: "/images/project2.jpeg",
+    image: "/images/startuplens/startup-lens.png",
     title: "StartupLens",
     subtitle: "Startup pitching and discovery platform",
     description:
@@ -115,11 +115,15 @@ export const projects: Project[] = [
       "Responsive discovery interface",
     ],
     links: {
-      live: "https://startuplens.vercel.app",
+      live: "https://startuplens-ten.vercel.app/",
       github: "https://github.com/skidev101/startuplens",
     },
     stack: ["Next.js", "Tailwind CSS", "Sanity"],
-    images: ["/images/project4.jpeg", "/images/project3.jpeg"],
+    images: [
+      "/images/startuplens/startup-lens.png",
+      "/images/startuplens/startup-lens_1.png",
+      "/images/startuplens/startup-lens_2.png",
+    ],
   },
 ];
 
