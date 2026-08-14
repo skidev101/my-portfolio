@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Github } from "lucide-react";
 import Threads from "./Threads";
@@ -25,9 +24,17 @@ const Hero = () => (
       </div>
 
       <div className="relative mx-auto md:mr-0">
-        <div className="technical-label absolute -top-8 left-0 whitespace-nowrap text-zinc-500">Ojomona Ethan Inedu</div>
-        <div className="relative size-40 overflow-hidden rounded-full bg-zinc-800 ring-1 ring-zinc-700 sm:size-[190px]"><Image src="/dp.png" alt="Ojomona Ethan Inedu, working as Monaski" fill priority sizes="(max-width: 640px) 160px, 190px" className="object-cover grayscale" /></div>
-        <span aria-hidden="true" className="absolute -right-3 bottom-2 size-5 rotate-45 bg-signal" />
+        <div className="technical-label absolute -top-8 left-0 whitespace-nowrap text-zinc-500">Monaski / signal mark</div>
+        <div className="relative grid size-40 place-items-center overflow-hidden bg-zinc-900 ring-1 ring-white/[0.08] sm:size-[190px]">
+          <div aria-hidden="true" className="absolute inset-0 opacity-70">
+            {[18, 30, 42, 54, 66, 78].map((top, index) => (
+              <span key={top} className="absolute left-[-12%] h-px w-[125%] bg-zinc-700" style={{ top: `${top}%`, transform: `rotate(${index % 2 === 0 ? -3 : 3}deg)` }} />
+            ))}
+          </div>
+          <span className="relative z-10 font-display text-7xl font-medium tracking-[-0.08em] text-ink sm:text-8xl">M</span>
+          <span aria-hidden="true" className="absolute right-[20%] h-[58%] w-2 -skew-x-[22deg] bg-signal" />
+          <span className="technical-label absolute right-3 bottom-3 text-zinc-500">001</span>
+        </div>
         <div className="technical-label absolute -right-2 -bottom-8 whitespace-nowrap text-zinc-500">Product / systems</div>
       </div>
     </div>

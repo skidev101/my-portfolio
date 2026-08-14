@@ -27,7 +27,38 @@ const toRoman = (value: number) => {
 };
 
 const Footer = () => (
-  <footer className="mx-auto flex w-[calc(100%_-_32px)] max-w-[960px] flex-col justify-between gap-5 py-7 text-copy sm:w-[calc(100%_-_48px)] sm:flex-row sm:items-center"><span className="technical-label">© {toRoman(new Date().getFullYear())} Monaski</span><div className="grid grid-cols-3 items-center overflow-hidden bg-zinc-900"><a className="flex size-10 items-center justify-center border-r border-white/[0.06] transition-colors hover:bg-zinc-800 hover:text-signal" href="https://github.com/skidev101" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={16} /></a><a className="flex size-10 items-center justify-center border-r border-white/[0.06] transition-colors hover:bg-zinc-800 hover:text-signal" href="https://linkedin.com/in/ojomonaethaninedu" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={16} /></a><a className="flex size-10 items-center justify-center transition-colors hover:bg-zinc-800 hover:text-signal" href="mailto:skidev101@gmail.com" aria-label="Email"><Mail size={16} /></a></div></footer>
+  <footer className="mx-auto flex w-[calc(100%_-_32px)] max-w-[960px] flex-col justify-between gap-5 py-7 text-copy sm:w-[calc(100%_-_48px)] sm:flex-row sm:items-center">
+    <span className="technical-label">
+      © {toRoman(new Date().getFullYear())} Monaski
+    </span>
+    <div className="grid w-fit grid-cols-3 items-center self-start overflow-hidden bg-zinc-900 sm:self-auto">
+      <a
+        className="flex size-10 items-center justify-center border-r border-white/[0.06] transition-colors hover:bg-zinc-800 hover:text-signal"
+        href="https://github.com/skidev101"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="GitHub"
+      >
+        <Github size={16} />
+      </a>
+      <a
+        className="flex size-10 items-center justify-center border-r border-white/[0.06] transition-colors hover:bg-zinc-800 hover:text-signal"
+        href="https://linkedin.com/in/ojomonaethaninedu"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="LinkedIn"
+      >
+        <Linkedin size={16} />
+      </a>
+      <a
+        className="flex size-10 items-center justify-center transition-colors hover:bg-zinc-800 hover:text-signal"
+        href="mailto:skidev101@gmail.com"
+        aria-label="Email"
+      >
+        <Mail size={16} />
+      </a>
+    </div>
+  </footer>
 );
 
 export default Footer;
