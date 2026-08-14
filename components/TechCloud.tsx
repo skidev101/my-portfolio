@@ -1,5 +1,4 @@
-import { IconCloud } from "./ui/icon-cloud"
-
+import { IconCloud } from "./ui/icon-cloud";
 
 const slugs = [
   "typescript",
@@ -32,16 +31,16 @@ const slugs = [
   "androidstudio",
   "sonarqube",
   "figma",
-]
+];
 
 export function TechCloud() {
   const images = slugs.map(
-    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
-  )
+    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
+  );
 
   return (
     <div className="relative flex size-full items-center justify-center overflow-hidden">
       <IconCloud images={images} />
     </div>
-  )
+  );
 }

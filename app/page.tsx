@@ -7,5 +7,15 @@ import Projects from "@/components/Projects";
 import TechStack from "@/components/TechStack";
 
 export default function Home() {
-  return <main><Hero /><About /><Experience /><Projects /><TechStack /><CallToAction /><Footer /></main>;
+  return (
+    <main>
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <TechStack />
+      <CallToAction />
+      <Footer />
+    </main>
+  );
 }

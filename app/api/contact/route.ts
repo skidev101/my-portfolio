@@ -9,12 +9,22 @@ const contactSchema = z.object({
 });
 
 const escapeHtml = (value: string) =>
-  value.replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character] ?? character);
+  value.replace(
+    /[&<>'"]/g,
+    (character) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[
+        character
+      ] ?? character,
+  );
 
 export async function POST(request: Request) {
   try {
     const parsed = contactSchema.safeParse(await request.json());
-    if (!parsed.success) return NextResponse.json({ error: "Invalid contact details" }, { status: 400 });
+    if (!parsed.success)
+      return NextResponse.json(
+        { error: "Invalid contact details" },
+        { status: 400 },
+      );
 
     const { name, email, message } = parsed.data;
     const resend = new Resend(process.env.RESEND_API_KEY);
@@ -26,9 +36,16 @@ export async function POST(request: Request) {
       html: `<h1>New portfolio enquiry</h1><p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>`,
     });
 
-    if (error) return NextResponse.json({ error: "Email delivery failed" }, { status: 502 });
+    if (error)
+      return NextResponse.json(
+        { error: "Email delivery failed" },
+        { status: 502 },
+      );
     return NextResponse.json({ success: true });
   } catch {
-    return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to send message" },
+      { status: 500 },
+    );
   }
 }

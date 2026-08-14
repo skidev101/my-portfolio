@@ -11,7 +11,14 @@ const SmoothScroll = () => {
     let frame = 0;
     let isRunning = false;
 
-    const clamp = (value: number) => Math.max(0, Math.min(value, document.documentElement.scrollHeight - window.innerHeight));
+    const clamp = (value: number) =>
+      Math.max(
+        0,
+        Math.min(
+          value,
+          document.documentElement.scrollHeight - window.innerHeight,
+        ),
+      );
 
     const render = () => {
       current += (target - current) * 0.085;
@@ -36,20 +43,29 @@ const SmoothScroll = () => {
     };
 
     const handleAnchor = (event: MouseEvent) => {
-      const link = (event.target as HTMLElement).closest<HTMLAnchorElement>("a[href]");
+      const link = (event.target as HTMLElement).closest<HTMLAnchorElement>(
+        "a[href]",
+      );
       if (!link) return;
 
       const href = link.getAttribute("href");
-      if (!href || link.target === "_blank" || link.hasAttribute("download")) return;
+      if (!href || link.target === "_blank" || link.hasAttribute("download"))
+        return;
 
-      const hash = href.startsWith("/#") ? href.slice(1) : href.startsWith("#") ? href : "";
+      const hash = href.startsWith("/#")
+        ? href.slice(1)
+        : href.startsWith("#")
+          ? href
+          : "";
       if (!hash) return;
 
       const destination = document.querySelector(hash);
       if (!destination) return;
 
       event.preventDefault();
-      target = clamp(window.scrollY + destination.getBoundingClientRect().top - 86);
+      target = clamp(
+        window.scrollY + destination.getBoundingClientRect().top - 86,
+      );
       window.history.pushState(null, "", hash);
       start();
     };

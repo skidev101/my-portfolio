@@ -64,7 +64,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
   const textInnerRef = useRef<HTMLSpanElement | null>(null);
   const textWrapRef = useRef<HTMLSpanElement | null>(null);
-  const [textLines, setTextLines] = useState<string[]>(["Menu", "Close"]);       
+  const [textLines, setTextLines] = useState<string[]>(["Menu", "Close"]);
 
   const openTlRef = useRef<gsap.core.Timeline | null>(null);
   const closeTweenRef = useRef<gsap.core.Tween | null>(null);
@@ -92,7 +92,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       let preLayers: HTMLElement[] = [];
       if (preContainer) {
         preLayers = Array.from(
-          preContainer.querySelectorAll(".sm-prelayer")
+          preContainer.querySelectorAll(".sm-prelayer"),
         ) as HTMLElement[];
       }
       preLayerElsRef.current = preLayers;
@@ -125,16 +125,16 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     itemEntranceTweenRef.current?.kill();
 
     const itemEls = Array.from(
-      panel.querySelectorAll(".sm-panel-itemLabel")
+      panel.querySelectorAll(".sm-panel-itemLabel"),
     ) as HTMLElement[];
     const numberEls = Array.from(
-      panel.querySelectorAll(".sm-panel-list[data-numbering] .sm-panel-item")
+      panel.querySelectorAll(".sm-panel-list[data-numbering] .sm-panel-item"),
     ) as HTMLElement[];
     const socialTitle = panel.querySelector(
-      ".sm-socials-title"
+      ".sm-socials-title",
     ) as HTMLElement | null;
     const socialLinks = Array.from(
-      panel.querySelectorAll(".sm-socials-link")
+      panel.querySelectorAll(".sm-socials-link"),
     ) as HTMLElement[];
 
     const layerStates = layers.map((el) => ({
@@ -156,7 +156,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         ls.el,
         { xPercent: ls.start },
         { xPercent: 0, duration: 0.5, ease: "power4.out" },
-        i * 0.07
+        i * 0.07,
       );
     });
 
@@ -168,7 +168,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       panel,
       { xPercent: panelStart },
       { xPercent: 0, duration: panelDuration, ease: "power4.out" },
-      panelInsertTime
+      panelInsertTime,
     );
 
     if (itemEls.length) {
@@ -184,7 +184,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           ease: "power4.out",
           stagger: { each: 0.1, from: "start" },
         },
-        itemsStart
+        itemsStart,
       );
 
       if (numberEls.length) {
@@ -196,7 +196,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             ["--sm-num-opacity" as any]: 1,
             stagger: { each: 0.08, from: "start" },
           },
-          itemsStart + 0.1
+          itemsStart + 0.1,
         );
       }
     }
@@ -208,7 +208,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         tl.to(
           socialTitle,
           { opacity: 1, duration: 0.5, ease: "power2.out" },
-          socialsStart
+          socialsStart,
         );
       if (socialLinks.length) {
         tl.to(
@@ -223,7 +223,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               gsap.set(socialLinks, { clearProps: "opacity" });
             },
           },
-          socialsStart + 0.04
+          socialsStart + 0.04,
         );
       }
     }
@@ -267,23 +267,23 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       overwrite: "auto",
       onComplete: () => {
         const itemEls = Array.from(
-          panel.querySelectorAll(".sm-panel-itemLabel")
+          panel.querySelectorAll(".sm-panel-itemLabel"),
         ) as HTMLElement[];
         if (itemEls.length) gsap.set(itemEls, { yPercent: 140, rotate: 10 });
 
         const numberEls = Array.from(
           panel.querySelectorAll(
-            ".sm-panel-list[data-numbering] .sm-panel-item"
-          )
+            ".sm-panel-list[data-numbering] .sm-panel-item",
+          ),
         ) as HTMLElement[];
         if (numberEls.length)
           gsap.set(numberEls, { ["--sm-num-opacity" as any]: 0 });
 
         const socialTitle = panel.querySelector(
-          ".sm-socials-title"
+          ".sm-socials-title",
         ) as HTMLElement | null;
         const socialLinks = Array.from(
-          panel.querySelectorAll(".sm-socials-link")
+          panel.querySelectorAll(".sm-socials-link"),
         ) as HTMLElement[];
         if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
         if (socialLinks.length) gsap.set(socialLinks, { y: 25, opacity: 0 });
@@ -334,7 +334,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         gsap.set(btn, { color: menuButtonColor });
       }
     },
-    [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen]
+    [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen],
   );
 
   React.useEffect(() => {
@@ -419,7 +419,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       <div
         className={
           (className ? className + " " : "") +
-          "staggered-menu-wrapper relative w-full h-full z-40" + 
+          "staggered-menu-wrapper relative w-full h-full z-40" +
           (open ? " pointer-events-none" : "")
         }
         style={
@@ -459,13 +459,13 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between p-[2em] bg-transparent pointer-events-none z-20"
           aria-label="Main navigation header"
         >
-         <div
+          <div
             className={`transition-all duration-300 delay-[400ms] ${
               open ? "opacity-100" : "opacity-0"
             }`}
           >
             {renderMenuContent?.(open)}
-          </div> 
+          </div>
           <div
             className="sm-logo flex items-center select-none pointer-events-auto"
             aria-label="Logo"
@@ -589,25 +589,24 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 >
                   {socialItems.map((s, i) => (
                     <li key={s.label + i} className="sm-socials-item">
-                    {s.download ? (
-                      <a
-                        href={s.link}
-                        download
-                        className="flex items-center gap-2 text-[1.1rem] font-medium text-[#111] dark:text-white bg-gray-100 rounded-full px-4 py-1 no-underline relative transition-[color,opacity] duration-300 ease-linear"
-                      >
-                        {s.icon} {s.label}
-                      </a>
-                    ) : (
-
-                      <a
-                        href={s.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-[1.1rem] font-medium text-[#111] dark:text-white bg-gray-100 rounded-full px-4 py-1 no-underline relative transition-[color,opacity] duration-300 ease-linear"
-                      >
-                        {s.icon} {s.label}
-                      </a>
-                    )}
+                      {s.download ? (
+                        <a
+                          href={s.link}
+                          download
+                          className="flex items-center gap-2 text-[1.1rem] font-medium text-[#111] dark:text-white bg-gray-100 rounded-full px-4 py-1 no-underline relative transition-[color,opacity] duration-300 ease-linear"
+                        >
+                          {s.icon} {s.label}
+                        </a>
+                      ) : (
+                        <a
+                          href={s.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-[1.1rem] font-medium text-[#111] dark:text-white bg-gray-100 rounded-full px-4 py-1 no-underline relative transition-[color,opacity] duration-300 ease-linear"
+                        >
+                          {s.icon} {s.label}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>

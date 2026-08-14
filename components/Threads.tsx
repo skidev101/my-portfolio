@@ -27,7 +27,9 @@ const Threads = ({
     let frame = 0;
     let animationFrame = 0;
     let pointer = { x: 0.5, y: 0.5 };
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     const resize = () => {
       const ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -39,7 +41,10 @@ const Threads = ({
     const handlePointer = (event: PointerEvent) => {
       if (!enableMouseInteraction) return;
       const bounds = canvas.getBoundingClientRect();
-      pointer = { x: (event.clientX - bounds.left) / bounds.width, y: (event.clientY - bounds.top) / bounds.height };
+      pointer = {
+        x: (event.clientX - bounds.left) / bounds.width,
+        y: (event.clientY - bounds.top) / bounds.height,
+      };
     };
 
     const draw = () => {
@@ -56,8 +61,14 @@ const Threads = ({
         for (let step = 0; step <= 60; step += 1) {
           const progress = step / 60;
           const x = progress * width;
-          const wave = Math.sin(progress * 5 + frame * 0.006 + index * 0.45) * height * 0.035 * amplitude;
-          const pull = enableMouseInteraction ? (pointer.y - 0.5) * height * distance * 0.1 : 0;
+          const wave =
+            Math.sin(progress * 5 + frame * 0.006 + index * 0.45) *
+            height *
+            0.035 *
+            amplitude;
+          const pull = enableMouseInteraction
+            ? (pointer.y - 0.5) * height * distance * 0.1
+            : 0;
           const y = base * height + wave + pull * Math.sin(progress * Math.PI);
           if (step === 0) context.moveTo(x, y);
           else context.lineTo(x, y);
@@ -83,7 +94,9 @@ const Threads = ({
     };
   }, [amplitude, color, distance, enableMouseInteraction]);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className="h-full w-full" />;
+  return (
+    <canvas ref={canvasRef} aria-hidden="true" className="h-full w-full" />
+  );
 };
 
 export default Threads;

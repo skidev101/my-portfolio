@@ -3,7 +3,7 @@ import type { Project } from "@/types";
 export const projects: Project[] = [
   {
     slug: "zury",
-    image: "https://image.thum.io/get/width/1600/crop/900/noanimate/https://zury-web-theta.vercel.app/",
+    image: "/images/zury/zury.png",
     title: "Zury",
     subtitle: "Offline-aware academic companion for university students",
     description:
@@ -11,7 +11,8 @@ export const projects: Project[] = [
     role: "Product design & full-stack engineering",
     year: "2026",
     category: "AI product / Education",
-    outcome: "A working academic operating system concept that turns scattered study obligations into a focused daily rhythm.",
+    outcome:
+      "A working academic operating system concept that turns scattered study obligations into a focused daily rhythm.",
     highlights: [
       "Offline-aware experience with local client caching",
       "Daily briefing and realistic weekly planning flows",
@@ -22,14 +23,18 @@ export const projects: Project[] = [
       live: "https://zury-web-theta.vercel.app/",
       github: "https://github.com/skidev101/zury",
     },
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "IndexedDB", "PWA"],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "SQLite", "PWA"],
     images: [
-      "https://image.thum.io/get/width/1600/crop/1000/noanimate/https://zury-web-theta.vercel.app/",
+      "/images/zury/zury.png",
+      "/images/zury/zury_1.png",
+      "/images/zury/zury_2.png",
+      "/images/zury/zury_3.png",
     ],
   },
   {
     slug: "be-studio",
-    image: "https://image.thum.io/get/width/1600/crop/900/noanimate/https://be-studio.vercel.app/",
+    image:
+      "https://image.thum.io/get/width/1600/crop/900/noanimate/https://be-studio.vercel.app/",
     title: "BE Graphic Studio",
     subtitle: "Conversion-focused platform for a global brand agency",
     description:
@@ -37,7 +42,8 @@ export const projects: Project[] = [
     role: "Design & full-stack development",
     year: "2026",
     category: "Client platform / Creative agency",
-    outcome: "A production agency website that communicates positioning, packages complex services, and routes prospective clients toward consultation.",
+    outcome:
+      "A production agency website that communicates positioning, packages complex services, and routes prospective clients toward consultation.",
     highlights: [
       "Service architecture spanning six branding offers",
       "Goal-led service recommendation and pricing presentation",
@@ -50,7 +56,10 @@ export const projects: Project[] = [
     },
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Resend"],
     images: [
-      "https://image.thum.io/get/width/1600/crop/1000/noanimate/https://be-studio.vercel.app/",
+      "/images/zury/zury.png",
+      "/images/zury/zury_1.png",
+      "/images/zury/zury_2.png",
+      "/images/zury/zury_3.png",
     ],
   },
   {
@@ -63,11 +72,30 @@ export const projects: Project[] = [
     role: "Full-stack engineering",
     year: "2025",
     category: "Social utility",
-    outcome: "A deployable end-to-end product for collecting anonymous, topic-specific feedback.",
-    highlights: ["Anonymous message workflow", "Topic-based shareable links", "Authentication and media handling"],
-    links: { live: "https://jsyk.pxxl.click", github: "https://github.com/skidev101/jsyk" },
-    stack: ["React", "Tailwind CSS", "Express", "MongoDB", "Firebase", "Cloudinary"],
-    images: ["/images/project1.jpeg", "/images/project2.jpeg", "/images/project3.jpeg"],
+    outcome:
+      "A deployable end-to-end product for collecting anonymous, topic-specific feedback.",
+    highlights: [
+      "Anonymous message workflow",
+      "Topic-based shareable links",
+      "Authentication and media handling",
+    ],
+    links: {
+      live: "https://jsyk.pxxl.click",
+      github: "https://github.com/skidev101/jsyk",
+    },
+    stack: [
+      "React",
+      "Tailwind CSS",
+      "Express",
+      "MongoDB",
+      "Firebase",
+      "Cloudinary",
+    ],
+    images: [
+      "/images/project1.jpeg",
+      "/images/project2.jpeg",
+      "/images/project3.jpeg",
+    ],
   },
   {
     slug: "startuplens",
@@ -79,9 +107,17 @@ export const projects: Project[] = [
     role: "Frontend engineering",
     year: "2025",
     category: "Founder platform",
-    outcome: "A content-driven product for publishing and discovering early-stage startup ideas.",
-    highlights: ["Structured startup profiles", "CMS-backed publishing", "Responsive discovery interface"],
-    links: { live: "https://startuplens.vercel.app", github: "https://github.com/skidev101/startuplens" },
+    outcome:
+      "A content-driven product for publishing and discovering early-stage startup ideas.",
+    highlights: [
+      "Structured startup profiles",
+      "CMS-backed publishing",
+      "Responsive discovery interface",
+    ],
+    links: {
+      live: "https://startuplens.vercel.app",
+      github: "https://github.com/skidev101/startuplens",
+    },
     stack: ["Next.js", "Tailwind CSS", "Sanity"],
     images: ["/images/project4.jpeg", "/images/project3.jpeg"],
   },
