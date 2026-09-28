@@ -8,11 +8,11 @@ import TechStack from "@/components/TechStack";
 
 export default function Home() {
   return (
-    <main>
+    <main id="main" tabIndex={-1}>
       <Hero />
+      <Projects />
       <About />
       <Experience />
-      <Projects />
       <TechStack />
       <CallToAction />
       <Footer />

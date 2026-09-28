@@ -1,11 +1,34 @@
-import { getProjectBySlug, projects } from "@/lib/projects";
-import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
+import type { Metadata } from "next";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getProjectBySlug, projects } from "@/lib/projects";
 
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const project = getProjectBySlug((await params).slug);
+  if (!project) return {};
+
+  const path = `/projects/${project.slug}`;
+  return {
+    title: project.title,
+    description: project.subtitle,
+    alternates: { canonical: path },
+    openGraph: {
+      type: "article",
+      url: path,
+      title: `${project.title} — ${project.category}`,
+      description: project.subtitle,
+    },
+  };
 }
 
 export default async function ProjectPage({
@@ -16,104 +39,128 @@ export default async function ProjectPage({
   const project = getProjectBySlug((await params).slug);
   if (!project) notFound();
 
+  const details = [
+    ["Role", project.role],
+    ["Category", project.category],
+    ["Year", project.year],
+  ];
+
   return (
-    <main className="mx-auto min-h-screen w-[calc(100%_-_32px)] max-w-[960px] pt-28 pb-20 sm:w-[calc(100%_-_48px)] sm:pt-40">
+    <main
+      id="main"
+      tabIndex={-1}
+      className="mx-auto max-w-[1100px] px-6 pt-28 pb-20 sm:px-8 sm:pt-32"
+    >
       <Link
         href="/#work"
-        className="technical-label inline-flex items-center gap-2 text-copy transition-colors hover:text-signal"
+        className="inline-flex items-center gap-1.5 text-sm text-copy transition-colors duration-150 ease-out hover:text-ink"
       >
-        <ArrowLeft size={14} /> Back to work
+        <ArrowLeft size={14} aria-hidden="true" />
+        All work
       </Link>
-      <div className="mt-8 grid gap-8 py-8 md:grid-cols-[1fr_300px] md:items-end">
-        <div>
-          <span className="technical-label text-signal">
-            Case file / {project.slug}
-          </span>
-          <h1 className="mt-4 font-display text-5xl tracking-[-0.04em] sm:text-7xl">
-            {project.title}
-          </h1>
-          <p className="mt-3 max-w-xl text-lg text-copy">{project.subtitle}</p>
-        </div>
-        <div className="flex gap-2 md:justify-end">
+
+      <header className="mt-10">
+        <h1 className="text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
+          {project.title}
+        </h1>
+        <p className="mt-3 max-w-[42rem] text-lg leading-8 text-copy">
+          {project.subtitle}
+        </p>
+        <div className="mt-7 flex flex-wrap gap-3">
           <a
             href={project.links.live}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex h-11 items-center gap-2 bg-ink px-4 font-mono text-[0.68rem] uppercase text-canvas transition-colors hover:bg-signal"
+            className="inline-flex min-h-11 items-center gap-2 rounded-md bg-ink px-4 text-sm font-medium text-canvas transition-[background-color,transform] duration-150 ease-out hover:bg-copy active:scale-[0.98]"
           >
-            Live project <ArrowUpRight size={15} />
+            Live site
+            <ArrowUpRight size={15} aria-hidden="true" />
           </a>
           <a
             href={project.links.github}
             target="_blank"
             rel="noreferrer"
-            aria-label="View source code"
-            className="flex size-11 items-center justify-center bg-zinc-900 transition-colors hover:bg-signal"
+            className="inline-flex min-h-11 items-center gap-2 rounded-md border border-line-strong px-4 text-sm font-medium text-ink transition-[background-color,border-color,transform] duration-150 ease-out hover:border-quiet hover:bg-surface active:scale-[0.98]"
           >
-            <Github size={16} />
+            Source
+            <ArrowUpRight size={15} aria-hidden="true" />
           </a>
         </div>
-      </div>
-      <div className="grid gap-10 py-12 md:grid-cols-[1fr_1.5fr] md:gap-[12%]">
-        <div>
-          <p className="technical-label text-copy">Overview</p>
-          <p className="mt-5 max-w-[180px] font-mono text-xs uppercase text-signal">
-            {project.outcome}
-          </p>
-        </div>
-        <p className="text-lg leading-8 text-copy">{project.description}</p>
-      </div>
-      <div className="grid gap-4 py-8 sm:grid-cols-3">
-        {[
-          ["Role", project.role],
-          ["Category", project.category],
-          ["Year", project.year],
-        ].map(([label, value]) => (
-          <div key={label} className="bg-zinc-900 p-4">
-            <p className="technical-label text-copy">{label}</p>
-            <p className="mt-3 text-sm text-ink">{value}</p>
+      </header>
+
+      {/* Hairlines come from the grid gap showing the container's own colour */}
+      <dl className="mt-12 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-3">
+        {details.map(([label, value]) => (
+          <div key={label} className="bg-canvas px-5 py-6">
+            <dt className="text-xs text-quiet">{label}</dt>
+            <dd className="mt-2 text-sm text-ink">{value}</dd>
           </div>
         ))}
+      </dl>
+
+      <div className="mt-14 grid gap-8 md:grid-cols-[180px_1fr] md:gap-12">
+        <h2 className="text-sm font-medium text-ink">Overview</h2>
+        <div className="max-w-[42rem]">
+          <p className="text-lg leading-8 text-ink">{project.outcome}</p>
+          <p className="mt-5 text-base leading-7 text-copy">
+            {project.description}
+          </p>
+        </div>
       </div>
-      <div className="py-8">
-        <p className="technical-label text-copy">What I built</p>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2">
-          {project.highlights.map((highlight, index) => (
-            <div
+
+      <div className="mt-14 grid gap-8 md:grid-cols-[180px_1fr] md:gap-12">
+        <h2 className="text-sm font-medium text-ink">What I built</h2>
+        <ul className="max-w-[42rem] divide-y divide-line">
+          {project.highlights.map((highlight) => (
+            <li
               key={highlight}
-              className="flex gap-3 text-sm leading-6 text-copy"
+              className="py-3.5 text-[0.9375rem] leading-6 text-copy first:pt-0 last:pb-0"
             >
-              <span className="technical-label text-signal">0{index + 1}</span>
-              <span>{highlight}</span>
-            </div>
+              {highlight}
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-      <div className="py-6">
-        <span className="technical-label text-copy">Built with</span>
-        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
-          {project.stack.map((tech) => (
-            <span key={tech} className="technical-label text-ink">
-              {tech}
-            </span>
+
+      <div className="mt-14 grid gap-8 md:grid-cols-[180px_1fr] md:gap-12">
+        <h2 className="text-sm font-medium text-ink">Built with</h2>
+        <ul className="flex flex-wrap gap-2">
+          {project.stack.map((technology) => (
+            <li
+              key={technology}
+              className="rounded-md border border-line px-2.5 py-1.5 font-mono text-xs text-copy"
+            >
+              {technology}
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-      <div className="grid gap-4 py-12 md:grid-cols-2">
+
+      <div className="mt-16 grid gap-5 sm:grid-cols-2">
         {project.images.map((image, index) => (
           <div
             key={`${image}-${index}`}
-            className="relative aspect-[1.4] overflow-hidden bg-zinc-900"
+            className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-surface"
           >
             <Image
               src={image}
-              alt={`${project.title} interface view ${index + 1}`}
+              alt={`${project.title} interface, view ${index + 1}`}
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
+              sizes="(max-width: 640px) 100vw, 520px"
+              className="object-cover object-top"
             />
           </div>
         ))}
+      </div>
+
+      <div className="mt-16 border-t border-line pt-8">
+        <Link
+          href="/#work"
+          className="inline-flex items-center gap-1.5 text-sm text-ink transition-colors duration-150 ease-out hover:text-signal"
+        >
+          <ArrowLeft size={14} aria-hidden="true" />
+          Back to all work
+        </Link>
       </div>
     </main>
   );

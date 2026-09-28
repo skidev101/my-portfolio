@@ -1,37 +1,28 @@
-import ProjectCard from "./ProjectCard";
 import { projects } from "@/lib/projects";
+import ProjectCard from "./ProjectCard";
 
 const Projects = () => (
   <section
     id="work"
-    className="mx-auto w-[calc(100%_-_32px)] max-w-[960px] py-20 sm:w-[calc(100%_-_48px)] sm:py-32"
+    className="mx-auto max-w-[1100px] px-6 py-16 sm:px-8 sm:py-24"
   >
-    <div className="flex items-baseline gap-3 sm:gap-[18px]">
-      <span className="technical-label text-signal">04</span>
-      <h2 className="font-display text-[1.8rem] font-normal tracking-[-0.03em] sm:text-[2.2rem]">
+    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+      <h2 className="text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">
         Selected work
       </h2>
-      {/*<span className="technical-label ml-auto text-copy">
-        {String(projects.length).padStart(2, "0")} projects
-      </span>*/}
-    </div>
-    <div className="flex flex-col justify-between gap-5 py-7 sm:flex-row sm:items-end">
-      <p className="m-0 max-w-[380px] text-copy leading-6">
-        Products I designed, built, and shipped across interfaces,
-        infrastructure, and real-world workflows.
-      </p>
       <a
-        className="font-mono text-[0.72rem] uppercase transition-colors hover:text-signal"
         href="https://github.com/skidev101"
         target="_blank"
         rel="noreferrer"
+        className="text-sm text-copy transition-colors duration-150 ease-out hover:text-ink"
       >
-        View GitHub <span className="text-signal">↗</span>
+        More on GitHub
       </a>
     </div>
-    <div className="grid gap-x-10 gap-y-14 md:grid-cols-2">
-      {projects.map((project, index) => (
-        <ProjectCard key={project.slug} {...project} index={index} />
+
+    <div className="mt-10 grid gap-12 sm:mt-12 sm:gap-16">
+      {projects.map((project) => (
+        <ProjectCard key={project.slug} {...project} />
       ))}
     </div>
   </section>

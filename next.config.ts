@@ -1,29 +1,7 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.simpleicons.org",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "image.thum.io",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "cdn.simpleicons.org",
-        pathname: "/**",
-      },
-    ],
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-};
+/* No remote image patterns: every image ships from /public, and the tech icons
+   that previously came from a third-party CDN are now plain text. */
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

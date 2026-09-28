@@ -3,36 +3,33 @@ import { experience } from "@/lib/experience";
 const Experience = () => (
   <section
     id="experience"
-    className="mx-auto w-[calc(100%_-_32px)] max-w-[960px] py-20 sm:w-[calc(100%_-_48px)] sm:py-32"
+    className="mx-auto max-w-[1100px] px-6 py-16 sm:px-8 sm:py-24"
   >
-    <div className="flex items-baseline gap-3 sm:gap-[18px]">
-      <span className="technical-label text-signal">03</span>
-      <h2 className="font-display text-[1.8rem] font-normal tracking-[-0.03em] sm:text-[2.2rem]">
+    <div className="grid gap-6 md:grid-cols-[180px_1fr] md:gap-12">
+      <h2 className="text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">
         Experience
       </h2>
-    </div>
-    <div className="mt-10 space-y-8">
-      {experience.map((item) => (
-        <div
-          key={`${item.company}-${item.role}`}
-          className="grid gap-3 sm:grid-cols-[1fr_150px] sm:gap-8"
-        >
-          <div className="flex gap-4">
-            <span
-              aria-hidden="true"
-              className="mt-2 size-2 shrink-0 rotate-45 bg-signal"
-            />
-            <div>
-              <h3 className="font-display text-xl font-normal">{item.role}</h3>
-              <p className="mt-1 text-sm text-copy">{item.company}</p>
-              <p className="mt-3 max-w-lg text-sm leading-6 text-copy">
-                {item.summary}
-              </p>
+
+      {/* Hairlines do the separating; no cards, no bullets */}
+      <div className="divide-y divide-line">
+        {experience.map((item) => (
+          <div
+            key={`${item.company}-${item.role}`}
+            className="py-6 first:pt-0 last:pb-0"
+          >
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h3 className="text-base font-medium text-ink">
+                {item.role}
+                <span className="text-quiet"> · {item.company}</span>
+              </h3>
+              <p className="font-mono text-xs text-quiet">{item.period}</p>
             </div>
+            <p className="mt-2 max-w-[36rem] text-[0.9375rem] leading-6 text-copy">
+              {item.summary}
+            </p>
           </div>
-          <p className="technical-label text-copy sm:pt-1">{item.period}</p>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 );
