@@ -61,12 +61,39 @@ export const viewport: Viewport = {
   themeColor: "#08090a",
 };
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ojomona Ethan Inedu",
+  alternateName: "Monaski",
+  jobTitle: "Full-Stack Engineer",
+  url: "https://monaski.vercel.app",
+  sameAs: [
+    "https://github.com/skidev101",
+    "https://x.com/monaski_",
+    "https://linkedin.com/in/ojomonaethaninedu",
+  ],
+  knowsAbout: [
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Tailwind CSS",
+    "Full-Stack Development",
+    "Software Engineering",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${sans.variable} ${mono.variable} ${serif.variable} relative min-h-screen bg-canvas text-ink antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <BgPattern />
         <a
           href="#main"
