@@ -20,7 +20,7 @@ const ProjectCard = ({
     <Link
       href={`/projects/${slug}`}
       aria-label={`${title} — read the case study`}
-      className="block overflow-hidden rounded-lg border border-line bg-surface"
+      className="block overflow-hidden rounded-lg border border-line bg-surface transition-all duration-300 fine-pointer:group-hover:border-line-strong fine-pointer:group-hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)]"
     >
       <div className="relative aspect-[16/10]">
         <Image
@@ -28,7 +28,7 @@ const ProjectCard = ({
           alt={`${title} interface`}
           fill
           sizes="(max-width: 1100px) 100vw, 1036px"
-          className="object-cover object-top transition-transform duration-300 ease-out fine-pointer:group-hover:scale-[1.02]"
+          className="object-cover object-top transition-transform duration-500 ease-out fine-pointer:group-hover:scale-[1.02]"
         />
       </div>
     </Link>
@@ -53,19 +53,19 @@ const ProjectCard = ({
           href={links.live}
           target="_blank"
           rel="noreferrer"
-          className={actionClass}
+          className="group/btn inline-flex items-center gap-1.5 rounded-md border border-line-strong px-2.5 py-1.5 text-xs font-medium text-copy transition-[color,border-color,background-color] duration-150 ease-out hover:border-quiet hover:bg-surface hover:text-ink"
         >
           Live
-          <ArrowUpRight size={13} aria-hidden="true" />
+          <ArrowUpRight size={13} aria-hidden="true" className="transition-transform duration-150 fine-pointer:group-hover/btn:translate-x-0.5 fine-pointer:group-hover/btn:-translate-y-0.5" />
         </a>
         <a
           href={links.github}
           target="_blank"
           rel="noreferrer"
-          className={actionClass}
+          className="group/btn inline-flex items-center gap-1.5 rounded-md border border-line-strong px-2.5 py-1.5 text-xs font-medium text-copy transition-[color,border-color,background-color] duration-150 ease-out hover:border-quiet hover:bg-surface hover:text-ink"
         >
           Code
-          <ArrowUpRight size={13} aria-hidden="true" />
+          <ArrowUpRight size={13} aria-hidden="true" className="transition-transform duration-150 fine-pointer:group-hover/btn:translate-x-0.5 fine-pointer:group-hover/btn:-translate-y-0.5" />
         </a>
       </div>
     </div>
@@ -74,7 +74,7 @@ const ProjectCard = ({
       {stack.map((technology) => (
         <li
           key={technology}
-          className="rounded border border-line px-2 py-1 font-mono text-xs text-quiet"
+          className="rounded-sm border border-line bg-surface/60 px-2 py-0.5 font-mono text-[11px] text-quiet transition-colors duration-150 fine-pointer:hover:border-line-strong fine-pointer:hover:text-ink"
         >
           {technology}
         </li>
