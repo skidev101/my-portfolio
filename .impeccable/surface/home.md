@@ -12,7 +12,7 @@ everything. Confidence comes from typography, spacing, and restraint, not
 ornament. The category standard is the commitment, taken deliberately; it is
 executed straight.
 
-OWN-WORLD: Near-black ground `#08090a`; a three-step neutral text ramp
+OWN-WORLD: Near-black ground `#000000`; a three-step neutral text ramp
 `#f5f6f7` / `#9ba1a6` / `#7d8388`; 1px hairlines at `#1f2124` and `#2e3135`; a
 single warm accent `#f07a3c` reserved strictly for status, focus, and link
 hover — never for large fills or primary buttons. One typeface, Instrument

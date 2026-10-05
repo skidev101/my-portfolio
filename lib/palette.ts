@@ -2,7 +2,7 @@
    read from TypeScript, and next/og renders without CSS at all, so these two
    files are the only places a colour value is spelled out. Change both. */
 export const palette = {
-  canvas: "#08090a",
+  canvas: "#000000",
   surface: "#111214",
   line: "#1f2124",
   ink: "#f5f6f7",

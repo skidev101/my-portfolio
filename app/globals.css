@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
-/* Tokens. Contrast measured against --color-canvas (#08090a):
-   ink 18.4:1, copy 7.6:1, quiet 5.2:1, signal 7.2:1. */
+/* Tokens. Contrast measured against --color-canvas (#000000):
+   ink 19.6:1, copy 8.0:1, quiet 5.5:1, signal 7.6:1. */
 @theme {
   /* Ground */
-  --color-canvas: #08090a;
+  --color-canvas: #000000;
   --color-surface: #111214;
 
   /* Text ramp */
@@ -13,7 +13,7 @@
   --color-quiet: #7d8388;
 
   /* Hairlines. `field` is the one border that must clear 3:1 — it measures
-     3.46:1 on the ground and 3.25:1 on surface, so a form control's boundary
+     3.64:1 on the ground and 3.25:1 on surface, so a form control's boundary
      is visible without depending on placeholder text (WCAG 1.4.11). */
   --color-line: #1f2124;
   --color-line-strong: #2e3135;
