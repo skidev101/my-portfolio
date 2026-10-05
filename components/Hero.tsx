@@ -28,10 +28,12 @@ const Hero = () => (
         <span>Nigeria, remote</span>
       </p>
 
-      <p className="mt-8 max-w-[36rem] text-lg leading-8 text-copy">
+      <p className="mt-8 max-w-[38rem] text-lg leading-8 text-copy">
         I&apos;m Ojomona Ethan Inedu. I carry a product from the first useful
-        interaction through to the systems that keep it reliable — product
-        decisions and engineering decisions as one decision.
+        interaction through to the systems that keep it{" "}
+        <span className="font-serif italic text-ink/95">reliable</span> — product
+        decisions and engineering decisions as{" "}
+        <span className="font-serif italic text-ink/95">one decision</span>.
       </p>
 
       <div className="mt-10 flex flex-wrap gap-3">

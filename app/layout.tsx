@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Schibsted_Grotesk } from "next/font/google";
+import { Geist_Mono, Instrument_Serif, Schibsted_Grotesk } from "next/font/google";
 import Header from "@/components/Header";
+import BgPattern from "@/components/BgPattern";
 import "./globals.css";
 
 /* One family carries display, body, and UI. Schibsted Grotesk is a precise
@@ -16,6 +17,15 @@ const sans = Schibsted_Grotesk({
 const mono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
+  display: "swap",
+});
+
+/* Serif is reserved for editorial emphasis callouts */
+const serif = Instrument_Serif({
+  weight: ["400"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-instrument",
   display: "swap",
 });
 
@@ -56,7 +66,8 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${sans.variable} ${mono.variable}`}>
+      <body className={`${sans.variable} ${mono.variable} ${serif.variable} relative min-h-screen bg-canvas text-ink antialiased`}>
+        <BgPattern />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2.5 focus:text-sm focus:font-medium focus:text-canvas"

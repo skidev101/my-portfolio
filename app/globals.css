@@ -45,6 +45,7 @@
 @theme inline {
   --font-sans: var(--font-schibsted);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument);
 }
 
 @layer base {
