@@ -6,7 +6,7 @@ const linkClass =
 const About = () => (
   <section
     id="about"
-    className="mx-auto max-w-[1100px] px-6 py-16 sm:px-8 sm:py-24"
+    className="mx-auto max-w-[680px] px-6 py-16 sm:px-8 sm:py-24"
   >
     <div className="grid gap-6 md:grid-cols-[180px_1fr] md:gap-12">
       <h2 className="text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">

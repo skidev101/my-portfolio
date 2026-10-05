@@ -1,7 +1,6 @@
 import { ArrowDown } from "lucide-react";
 import RoleSwitcher from "./RoleSwitcher";
 import CopyEmailButton from "./CopyEmailButton";
-import GithubStreak from "./GithubStreak";
 
 const resumeHref = "/assets/resume/Ojomona_Inedu_Resume.pdf";
 
@@ -12,8 +11,8 @@ const secondary =
   "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-line-strong px-4 text-sm font-medium text-ink transition-[background-color,border-color,transform] duration-150 ease-out hover:border-quiet hover:bg-surface active:scale-[0.98]";
 
 const Hero = () => (
-  <section className="mx-auto max-w-[1100px] px-6 pt-32 pb-16 sm:px-8 sm:pt-40 sm:pb-24">
-    <div className="animate-rise max-w-[44rem]">
+  <section className="mx-auto max-w-[680px] px-6 pt-32 pb-16 sm:px-8 sm:pt-40 sm:pb-24">
+    <div className="animate-rise">
       <h1 className="text-display font-semibold tracking-tight">Monaski</h1>
 
       <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-base text-copy">
@@ -35,12 +34,10 @@ const Hero = () => (
         <CopyEmailButton />
       </p>
 
-      <p className="mt-8 max-w-[38rem] text-lg leading-8 text-copy">
+      <p className="mt-8 text-lg leading-8 text-copy">
         I&apos;m Ojomona Ethan Inedu. I carry a product from the first useful
-        interaction through to the systems that keep it{" "}
-        <span className="font-serif italic text-ink/95">reliable</span> — product
-        decisions and engineering decisions as{" "}
-        <span className="font-serif italic text-ink/95">one decision</span>.
+        interaction through to the systems that keep it reliable — product
+        decisions and engineering decisions as one decision.
       </p>
 
       <div className="mt-10 flex flex-wrap gap-3">
@@ -52,8 +49,6 @@ const Hero = () => (
           Résumé
         </a>
       </div>
-
-      <GithubStreak />
     </div>
   </section>
 );

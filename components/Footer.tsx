@@ -12,7 +12,7 @@ const socials = [
 
 const Footer = () => (
   <footer className="border-t border-line">
-    <div className="mx-auto flex max-w-[1100px] flex-wrap items-center justify-between gap-x-8 gap-y-5 px-6 py-10 sm:px-8">
+    <div className="mx-auto flex max-w-[680px] flex-wrap items-center justify-between gap-x-8 gap-y-5 px-6 py-10 sm:px-8">
       <p className="text-sm text-quiet">
         © {new Date().getFullYear()} Ojomona Ethan Inedu
       </p>

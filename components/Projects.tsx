@@ -4,7 +4,7 @@ import ProjectCard from "./ProjectCard";
 const Projects = () => (
   <section
     id="work"
-    className="mx-auto max-w-[1100px] px-6 py-16 sm:px-8 sm:py-24"
+    className="mx-auto max-w-[680px] px-6 py-16 sm:px-8 sm:py-24"
   >
     <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
       <h2 className="text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">

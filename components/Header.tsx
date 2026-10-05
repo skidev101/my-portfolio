@@ -89,7 +89,7 @@ const Header = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-canvas/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-[1100px] items-center justify-between px-6 sm:px-8">
+      <div className="mx-auto flex h-16 max-w-[680px] items-center justify-between px-6 sm:px-8">
         <Link
           href="/"
           onClick={() => close()}
