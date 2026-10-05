@@ -1,15 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Schibsted_Grotesk } from "next/font/google";
+import { Geist_Mono, Instrument_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import BgPattern from "@/components/BgPattern";
 import "./globals.css";
 
-/* One family carries display, body, and UI. Schibsted Grotesk is a precise
-   neo-grotesque rather than the Vercel/Inter default, so the page reads
-   deliberately typeset instead of generated. */
-const sans = Schibsted_Grotesk({
+/* One family carries display, body, and UI. Instrument Sans is a grotesque
+   with real letterform character — slightly condensed and deliberately drawn,
+   rather than the neo-grotesque default, so the page reads typeset instead
+   of generated. */
+const sans = Instrument_Sans({
   subsets: ["latin"],
-  variable: "--font-schibsted",
+  variable: "--font-instrument",
   display: "swap",
 });
 

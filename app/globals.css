@@ -43,7 +43,7 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-schibsted);
+  --font-sans: var(--font-instrument);
   --font-mono: var(--font-geist-mono);
 }
 

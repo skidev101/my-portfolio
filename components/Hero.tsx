@@ -1,5 +1,4 @@
 import { ArrowDown } from "lucide-react";
-import RoleSwitcher from "./RoleSwitcher";
 import CopyEmailButton from "./CopyEmailButton";
 
 const resumeHref = "/assets/resume/Ojomona_Inedu_Resume.pdf";
@@ -16,7 +15,7 @@ const Hero = () => (
       <h1 className="text-display font-semibold tracking-tight">Monaski</h1>
 
       <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-base text-copy">
-        <RoleSwitcher />
+        <span className="font-medium text-ink">Full-Stack Engineer</span>
         <span aria-hidden="true" className="text-line-strong">
           /
         </span>

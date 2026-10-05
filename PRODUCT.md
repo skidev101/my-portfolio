@@ -31,7 +31,7 @@ Works where product decisions and engineering decisions are the same decision â€
 ## Capabilities and Constraints
 
 - Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4.
-- Content is typed data under `lib/`: `projects.ts`, `experience.ts`, `technologies.ts`, `sections.ts`.
+- Content is typed data under `lib/`: `projects.ts`, `experience.ts`.
 - Three case studies with real screenshots and live URLs: JSYK, Zury, StartupLens.
 - Contact form posts to `/api/contact`, sends via Resend, and requires `RESEND_API_KEY`.
 - Fonts are self-hosted; no third-party font CDN at runtime.
@@ -42,7 +42,7 @@ Works where product decisions and engineering decisions are the same decision â€
 - Outbound identities are fixed: GitHub `skidev101`, LinkedIn `ojomonaethaninedu`, X `@monaski_`, email `skidev101@gmail.com`.
 - The user's volunteered direction for this work, recorded not expanded: **clean, minimal, professional**.
 - **Standing preference (recorded at the user's direction): the category standard.** On 2026-09-28 the user took the standing exit during a direction round â€” the conventional dark developer portfolio, played straight, without irony or smuggled quirk. Convention is the commitment. Craft bar, named by the user: **Vercel / Linear / Raycast** for restraint and type discipline, plus **Brittany Chiang / Lee Robinson** for clarity and structure.
-- **Typeface, chosen by the user:** Schibsted Grotesk for everything, Geist Mono for data only. Rejected: Geist (reads as a Vercel starter signal), Inter (overused default).
+- **Typeface, chosen by the user:** Instrument Sans for everything, Geist Mono for data only. Rejected: Geist (reads as a Vercel starter signal), Inter (overused default), Schibsted Grotesk (chosen first, then rejected on 2026-10-05 as too generic to carry the page).
 - **Hard constraints, named by the user as failure modes:** no "agency flash" (heavy motion, oversized type, animated everything) and no "template-bare minimalism" (generic minimal layout with no point of view).
 
 ## Evidence on Hand

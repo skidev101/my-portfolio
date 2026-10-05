@@ -14,8 +14,8 @@ export const projects: Project[] = [
     outcome:
       "A deployable end-to-end product for collecting anonymous, topic-specific feedback.",
     highlights: [
-      "Anonymous message workflow",
-      "Topic-based shareable links",
+      "Messages arrive with no sender identity attached",
+      "A short path from creating a topic link to the first reply",
       "Authentication and media handling",
     ],
     links: {
@@ -50,10 +50,10 @@ export const projects: Project[] = [
     outcome:
       "A working academic operating system concept that turns scattered study obligations into a focused daily rhythm.",
     highlights: [
-      "Offline-aware experience with local client caching",
-      "Daily briefing and realistic weekly planning flows",
+      "Offline-first caching, so it stays usable when the network drops",
+      "A daily briefing and weekly planning that assume competing priorities",
       "PDF-based study assistance and contextual AI actions",
-      "Responsive interface designed for low-bandwidth use",
+      "Designed for low-bandwidth connections, not just small screens",
     ],
     links: {
       live: "https://zury-web-theta.vercel.app/",
@@ -118,8 +118,8 @@ export const projects: Project[] = [
     outcome:
       "A content-driven product for publishing and discovering early-stage startup ideas.",
     highlights: [
-      "Structured startup profiles",
-      "CMS-backed publishing",
+      "Reusable content models that keep every profile consistent",
+      "CMS-backed publishing, so content changes ship without a deploy",
       "Responsive discovery interface",
     ],
     links: {

@@ -28,7 +28,7 @@ build needs network access. No font binaries live in the repo.
 | Path | Contents |
 | --- | --- |
 | `app/globals.css` | Design tokens (`@theme`) and the base layer |
-| `lib/projects.ts`, `lib/experience.ts`, `lib/technologies.ts` | Content |
+| `lib/projects.ts`, `lib/experience.ts` | Content |
 | `lib/palette.ts` | Colour values mirrored for `next/og`, which can't read CSS |
 | `components/` | One file per section |
 | `PRODUCT.md` | Product truth: users, purpose, constraints, evidence |
@@ -37,7 +37,7 @@ build needs network access. No font binaries live in the repo.
 ### Constraints worth knowing
 
 - **Dark-only by design.** There is no light theme and no theme toggle.
-- **One typeface, two roles.** Schibsted Grotesk carries display, body, and UI.
+- **One typeface, two roles.** Instrument Sans carries display, body, and UI.
   Geist Mono is reserved for content that is actually data — stack tags and
   years — never as a decorative "technical" costume.
 - **The accent is not a fill.** `--color-signal` marks status, focus, and link

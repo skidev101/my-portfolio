@@ -15,8 +15,8 @@ executed straight.
 OWN-WORLD: Near-black ground `#08090a`; a three-step neutral text ramp
 `#f5f6f7` / `#9ba1a6` / `#7d8388`; 1px hairlines at `#1f2124` and `#2e3135`; a
 single warm accent `#f07a3c` reserved strictly for status, focus, and link
-hover — never for large fills or primary buttons. One typeface, Schibsted
-Grotesk, at 400/500/600. Geist Mono appears only where the content is actually
+hover — never for large fills or primary buttons. One typeface, Instrument
+Sans, at 400/500/600. Geist Mono appears only where the content is actually
 data: stack tags and years. Recognisable with all content removed by its
 hairline-and-ramp discipline and the absence of any decorated surface.
 
