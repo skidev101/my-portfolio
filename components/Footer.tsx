@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 const toRoman = (value: number) => {
   const numerals = [
@@ -31,7 +31,7 @@ const Footer = () => (
     <span className="technical-label">
       © {toRoman(new Date().getFullYear())} Monaski
     </span>
-    <div className="grid w-fit grid-cols-3 items-center self-start overflow-hidden bg-zinc-900 sm:self-auto">
+    <div className="grid w-fit grid-cols-4 items-center self-start overflow-hidden bg-zinc-900 sm:self-auto">
       <a
         className="flex size-10 items-center justify-center border-r border-white/[0.06] transition-colors hover:bg-zinc-800 hover:text-signal"
         href="https://github.com/skidev101"
@@ -49,6 +49,15 @@ const Footer = () => (
         aria-label="LinkedIn"
       >
         <Linkedin size={16} />
+      </a>
+      <a
+        className="flex size-10 items-center justify-center border-r border-white/[0.06] transition-colors hover:bg-zinc-800 hover:text-signal"
+        href="https://x.com/monaski_"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="X"
+      >
+        <Twitter size={16} />
       </a>
       <a
         className="flex size-10 items-center justify-center transition-colors hover:bg-zinc-800 hover:text-signal"
