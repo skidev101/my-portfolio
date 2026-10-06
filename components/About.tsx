@@ -44,6 +44,15 @@ const About = () => (
             LinkedIn
             <ArrowUpRight size={14} aria-hidden="true" />
           </a>
+          <a
+            className={linkClass}
+            href="https://x.com/monaski_"
+            target="_blank"
+            rel="noreferrer"
+          >
+            X
+            <ArrowUpRight size={14} aria-hidden="true" />
+          </a>
           <a className={linkClass} href="mailto:skidev101@gmail.com">
             Email
             <ArrowUpRight size={14} aria-hidden="true" />

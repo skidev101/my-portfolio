@@ -1,6 +1,6 @@
 "use client";
 
-import { FileText, Github, Linkedin, Menu, X } from "lucide-react";
+import { FileText, Github, Linkedin, Menu, Twitter, X } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -18,6 +18,7 @@ const socials = [
     href: "https://linkedin.com/in/ojomonaethaninedu",
     Icon: Linkedin,
   },
+  { label: "X", href: "https://x.com/monaski_", Icon: Twitter },
 ];
 
 const resumeHref = "/assets/resume/Ojomona_Inedu_Resume.pdf";
