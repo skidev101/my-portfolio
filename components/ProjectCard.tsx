@@ -23,12 +23,14 @@ const ProjectCard = ({
   subtitle,
   role,
   year,
+  category,
   outcome,
   highlights,
   links,
   stack,
 }: Project) => {
   const href = `/projects/${slug}`;
+  const extraHighlights = highlights.length - 2;
 
   return (
     <article className="group">
@@ -61,8 +63,18 @@ const ProjectCard = ({
           <p className="mt-1.5 text-[0.9375rem] leading-6 text-copy">
             {subtitle}
           </p>
-          <p className="mt-2 text-sm text-quiet">
-            {role} · <span className="font-mono">{year}</span>
+          <p className="mt-2 flex flex-wrap items-center gap-x-2 text-sm text-quiet">
+            <span>{role}</span>
+            <span aria-hidden="true">·</span>
+            <span className="font-mono">{year}</span>
+            {category && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span className="rounded-sm border border-line bg-surface/60 px-1.5 py-px font-mono text-[11px] text-quiet">
+                  {category}
+                </span>
+              </>
+            )}
           </p>
         </div>
 
@@ -108,6 +120,12 @@ const ProjectCard = ({
           </li>
         ))}
       </ul>
+
+      {extraHighlights > 0 && (
+        <p className="mt-3 text-sm text-quiet">
+          +{extraHighlights} more in the case study
+        </p>
+      )}
 
       <ul className="mt-5 flex flex-wrap gap-1.5">
         {stack.map((technology) => (
